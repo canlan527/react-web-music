@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, Suspense } from 'react'
 import type { FC, ReactNode } from 'react'
 import { Outlet, Link } from 'react-router-dom'
 
@@ -17,7 +17,9 @@ const Discover: FC<IProps> = () => {
         <Link to="/discover/singer">歌手</Link>
         <Link to="/discover/newAlbum">新碟上架</Link>
       </div>
-      <Outlet />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </div>
   )
 }
