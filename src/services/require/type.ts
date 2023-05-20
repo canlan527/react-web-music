@@ -1,4 +1,4 @@
-import type {AxiosRequestConfig, AxiosResponse} from 'axios'
+import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 export interface Interceptors<T = AxiosResponse> {
   requestSuccessFn?: (config: AxiosRequestConfig) => any
@@ -7,6 +7,6 @@ export interface Interceptors<T = AxiosResponse> {
   responseFailedFn?: (err: any) => any
 }
 
-export interface RequestConfig<T = AxiosResponse> extends AxiosRequestConfig{
-  interceptors?:Interceptors<T>
+export interface RequestConfig<T = AxiosResponse> extends AxiosRequestConfig {
+  interceptors?: Interceptors<T>
 }

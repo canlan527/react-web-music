@@ -1,5 +1,5 @@
-import Request from './require';
-import { BASE_URL,TIME_OUT } from './config';
+import Request from './require'
+import { BASE_URL, TIME_OUT } from './config'
 
 const request = new Request({
   baseURL: BASE_URL,
@@ -7,8 +7,8 @@ const request = new Request({
   interceptors: {
     requestSuccessFn(config) {
       return config
-    }
-  }
+    },
+  },
 })
 
 export default request
