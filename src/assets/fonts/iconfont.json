@@ -1,0 +1,177 @@
+{
+  "id": "2649892",
+  "name": "music",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "88074",
+      "name": "play",
+      "font_class": "play",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "722170",
+      "name": "plus",
+      "font_class": "plussign",
+      "unicode": "e75a",
+      "unicode_decimal": 59226
+    },
+    {
+      "icon_id": "952354",
+      "name": "up",
+      "font_class": "up",
+      "unicode": "e6e0",
+      "unicode_decimal": 59104
+    },
+    {
+      "icon_id": "1029926",
+      "name": "plus",
+      "font_class": "plus",
+      "unicode": "e74b",
+      "unicode_decimal": 59211
+    },
+    {
+      "icon_id": "1080339",
+      "name": "next",
+      "font_class": "next",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "1222014",
+      "name": "arrow-down",
+      "font_class": "arrowdown",
+      "unicode": "e692",
+      "unicode_decimal": 59026
+    },
+    {
+      "icon_id": "1224913",
+      "name": "download",
+      "font_class": "download",
+      "unicode": "e6a5",
+      "unicode_decimal": 59045
+    },
+    {
+      "icon_id": "1433866",
+      "name": "user",
+      "font_class": "user",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "1555794",
+      "name": "list",
+      "font_class": "list",
+      "unicode": "e6a3",
+      "unicode_decimal": 59043
+    },
+    {
+      "icon_id": "1911696",
+      "name": "MINUS",
+      "font_class": "MINUS",
+      "unicode": "e710",
+      "unicode_decimal": 59152
+    },
+    {
+      "icon_id": "2076265",
+      "name": "评论",
+      "font_class": "pinglun",
+      "unicode": "e891",
+      "unicode_decimal": 59537
+    },
+    {
+      "icon_id": "4765973",
+      "name": "plus-square",
+      "font_class": "plus-square",
+      "unicode": "e797",
+      "unicode_decimal": 59287
+    },
+    {
+      "icon_id": "4766293",
+      "name": "user",
+      "font_class": "user1",
+      "unicode": "e7ae",
+      "unicode_decimal": 59310
+    },
+    {
+      "icon_id": "5973112",
+      "name": "play-filling",
+      "font_class": "play-filling",
+      "unicode": "e87e",
+      "unicode_decimal": 59518
+    },
+    {
+      "icon_id": "6151139",
+      "name": "pause circle-fill",
+      "font_class": "pausecircle-fill",
+      "unicode": "e7cb",
+      "unicode_decimal": 59339
+    },
+    {
+      "icon_id": "6151390",
+      "name": "angle- double-down",
+      "font_class": "angle-double-down",
+      "unicode": "e848",
+      "unicode_decimal": 59464
+    },
+    {
+      "icon_id": "15535875",
+      "name": "write",
+      "font_class": "write",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "16549979",
+      "name": "minus",
+      "font_class": "minus",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "16615969",
+      "name": "up",
+      "font_class": "up1",
+      "unicode": "e686",
+      "unicode_decimal": 59014
+    },
+    {
+      "icon_id": "17675189",
+      "name": "pause",
+      "font_class": "pause",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "33855654",
+      "name": "prev",
+      "font_class": "prev",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "5113361",
+      "name": "music",
+      "font_class": "icon-test",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "5129737",
+      "name": "musical",
+      "font_class": "musical",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "21748409",
+      "name": "音乐",
+      "font_class": "yinle",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    }
+  ]
+}

@@ -2,7 +2,7 @@ import { styled } from 'styled-components'
 
 export const HeaderWrapper = styled.div`
   .nav {
-    height: 100px;
+    /* height: 100px; */
     ${(props) => props.theme.mixin.wrapv1}
     ${(props) => props.theme.mixin.flexCenter}
     
