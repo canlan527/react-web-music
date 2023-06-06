@@ -14,3 +14,7 @@ body, textarea, select, input, button {
   width: 980px;
   margin: 0 auto;
 }
+
+.iconfont {
+  color: #eee;
+}

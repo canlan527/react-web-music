@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components'
 
 import 'normalize.css'
 import './assets/css/reset.css'
+import './assets/fonts/iconfont.css'
 
 import App from '@/App'
 import store from '@/store'

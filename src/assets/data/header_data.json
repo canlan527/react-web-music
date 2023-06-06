@@ -1,0 +1,22 @@
+[
+  {
+    "title": "发现音乐",
+    "type": "path",
+    "link": "/discover"
+  },
+  {
+    "title": "关注",
+    "type": "path",
+    "link": "/focus"
+  },
+  {
+    "title": "我的",
+    "type": "path",
+    "link": "/mine"
+  },
+  {
+    "title": "开放平台",
+    "type": "link",
+    "link": "https://y.qq.com/artists"
+  }
+]

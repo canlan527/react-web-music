@@ -1,7 +1,7 @@
 const theme = {
   color: {
     primary: '#c20c0c',
-    secondary: '#31c27c',
+    secondary: '#62BF82',
     tertiary: '#424242',
     quaternary: '',
   },
@@ -23,6 +23,11 @@ const theme = {
     flexSpaceAround: `
       display: flex;
       justify-content: space-around;
+      align-items: center;
+    `,
+    flexSpaceBetween: `
+      display: flex;
+      justify-content: space-between;
       align-items: center;
     `,
   },
