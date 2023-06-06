@@ -22,12 +22,12 @@ const AppHeader: FC<IProps> = () => {
     <HeaderWrapper>
       <div className="nav">
         <HeaderLeft>
-          <div className="logo-box">
+          <a className="logo-box" href="/">
             <div className="logo">
               <img src={logoPng} alt="" />
             </div>
             <span className="logo-title">X Muscial</span>
-          </div>
+          </a>
 
           <div className="nav-item">
             {headerData.map((item) => (

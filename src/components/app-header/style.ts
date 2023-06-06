@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
 export const HeaderWrapper = styled.div`
-  height: 80px;
+  height: 90px;
   background: #fff;
   box-shadow: 0 -2px 3px 4px rgba(222, 222, 222, 0.7);
   .nav {
@@ -17,7 +17,9 @@ export const HeaderLeft = styled.div`
   width: 100%;
   overflow: hidden;
   .logo-box {
-    ${(props) => props.theme.mixin.flexSpaceAround}
+    ${(props) => props.theme.mixin.flexSpaceAround};
+    cursor: pointer;
+    margin-right: 20px;
     .logo {
       width: 80px;
       height: 80px;
@@ -40,7 +42,7 @@ export const HeaderLeft = styled.div`
       text-align: center;
       padding: 0 20px;
       line-height: 90px;
-      &:hover {
+      &:hover a {
         color: ${(props) => props.theme.color.secondary};
       }
     }
@@ -57,21 +59,24 @@ export const HeaderRight = styled.div`
     position: relative;
     overflow: hidden;
     input {
-      width: 200px;
-      padding: 12px 4px;
+      width: 250px;
+      padding: 12px 8px;
       margin: 0 20px;
+      color: #666;
       border-radius: 3px;
       border: 1px solid #eee;
       outline: none;
+      box-sizing: border-box;
+      overflow: hidden;
     }
     .icon-search {
       position: absolute;
       right: 20px;
-      top: 33%;
+      top: 32%;
       transform: translateY(-50%);
-      padding: 12px;
-      /* color: #eee; */
+      padding: 10px;
       font-size: 24px;
+      border-radius: 3px;
       cursor: pointer;
       &:hover {
         background: rgba(222, 222, 222, 0.6);
