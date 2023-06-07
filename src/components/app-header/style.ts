@@ -42,8 +42,21 @@ export const HeaderLeft = styled.div`
       text-align: center;
       padding: 0 20px;
       line-height: 90px;
-      &:hover a {
-        color: ${(props) => props.theme.color.secondary};
+
+      a {
+        display: inline-block;
+        padding: 0 12px;
+        height: 100%;
+        &:hover {
+          color: ${(props) => props.theme.color.secondary};
+        }
+      }
+      .active {
+        color: #fff;
+        background: ${(props) => props.theme.color.secondary};
+        &:hover {
+          color: #fff;
+        }
       }
     }
   }

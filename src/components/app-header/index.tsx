@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { HeaderWrapper, HeaderLeft, HeaderRight } from './style'
 import headerData from '@/assets/data/header_data.json'
 import logoPng from '@/assets/imgs/logo.png'
@@ -12,7 +12,7 @@ interface IProps {
 const AppHeader: FC<IProps> = () => {
   function showItem(item: any) {
     if (item.type === 'path') {
-      return <Link to={item.link}>{item.title}</Link>
+      return <NavLink to={item.link}>{item.title}</NavLink>
     } else {
       return <a href={item.link}>{item.title}</a>
     }
