@@ -73,7 +73,7 @@ export const HeaderRight = styled.div`
     overflow: hidden;
     input {
       width: 250px;
-      padding: 12px 8px;
+      padding: 12px 46px 12px 8px;
       margin: 0 20px;
       color: #666;
       border-radius: 3px;

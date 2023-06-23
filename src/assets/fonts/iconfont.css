@@ -1,12 +1,11 @@
 @font-face {
-  font-family: "iconfont"; /* Project id 2649892 */
-  src: url('iconfont.woff2?t=1686061624274') format('woff2'),
-       url('iconfont.woff?t=1686061624274') format('woff'),
-       url('iconfont.ttf?t=1686061624274') format('truetype');
+  font-family: 'iconfont'; /* Project id 2649892 */
+  src: url('iconfont.woff2?t=1686061624274') format('woff2'), url('iconfont.woff?t=1686061624274') format('woff'),
+    url('iconfont.ttf?t=1686061624274') format('truetype');
 }
 
 .iconfont {
-  font-family: "iconfont" !important;
+  font-family: 'iconfont' !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -14,102 +13,101 @@
 }
 
 .icon-search:before {
-  content: "\e648";
+  content: '\e648';
 }
 
 .icon-play:before {
-  content: "\e600";
+  content: '\e600';
 }
 
 .icon-plussign:before {
-  content: "\e75a";
+  content: '\e75a';
 }
 
 .icon-up:before {
-  content: "\e6e0";
+  content: '\e6e0';
 }
 
 .icon-plus:before {
-  content: "\e74b";
+  content: '\e74b';
 }
 
 .icon-next:before {
-  content: "\e610";
+  content: '\e610';
 }
 
 .icon-arrowdown:before {
-  content: "\e692";
+  content: '\e692';
 }
 
 .icon-download:before {
-  content: "\e6a5";
+  content: '\e6a5';
 }
 
 .icon-user:before {
-  content: "\e66f";
+  content: '\e66f';
 }
 
 .icon-list:before {
-  content: "\e6a3";
+  content: '\e6a3';
 }
 
 .icon-MINUS:before {
-  content: "\e710";
+  content: '\e710';
 }
 
 .icon-pinglun:before {
-  content: "\e891";
+  content: '\e891';
 }
 
 .icon-plus-square:before {
-  content: "\e797";
+  content: '\e797';
 }
 
 .icon-user1:before {
-  content: "\e7ae";
+  content: '\e7ae';
 }
 
 .icon-play-filling:before {
-  content: "\e87e";
+  content: '\e87e';
 }
 
 .icon-pausecircle-fill:before {
-  content: "\e7cb";
+  content: '\e7cb';
 }
 
 .icon-angle-double-down:before {
-  content: "\e848";
+  content: '\e848';
 }
 
 .icon-write:before {
-  content: "\e672";
+  content: '\e672';
 }
 
 .icon-minus:before {
-  content: "\e66d";
+  content: '\e66d';
 }
 
 .icon-up1:before {
-  content: "\e686";
+  content: '\e686';
 }
 
 .icon-pause:before {
-  content: "\e630";
+  content: '\e630';
 }
 
 .icon-prev:before {
-  content: "\e613";
+  content: '\e613';
 }
 
 .icon-icon-test:before {
-  content: "\e62b";
+  content: '\e62b';
 }
 
 .icon-musical:before {
-  content: "\e60b";
+  content: '\e60b';
 }
 
 .icon-yinle:before {
-  content: "\e623";
+  content: '\e623';
 }
-
