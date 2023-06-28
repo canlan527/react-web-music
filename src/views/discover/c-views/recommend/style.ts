@@ -5,7 +5,3 @@ export const RecommendWrapper = styled.div`
   background: #eee;
   ${(props) => props.theme.mixin.flexCenter};
 `
-
-export const BannerSection = styled.div`
-  width: 1080px;
-`
