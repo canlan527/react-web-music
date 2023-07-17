@@ -5,6 +5,7 @@ import { fetchBannersDataAction } from '@/store/modules/recommend'
 import { RecommendWrapper } from './style'
 
 import Banner from './c-cpns/banner'
+import Hot from './c-cpns/hot/index'
 interface IProps {
   children?: ReactNode
 }
@@ -21,8 +22,8 @@ const Recommend: FC<IProps> = () => {
 
   return (
     <RecommendWrapper>
-      <Banner></Banner>
-      <div>其他东西</div>
+      <Banner />
+      <Hot />
       <div>其他东西</div>
       <div>其他东西</div>
     </RecommendWrapper>
