@@ -22,6 +22,9 @@ const Recommend: FC<IProps> = () => {
   return (
     <RecommendWrapper>
       <Banner></Banner>
+      <div>其他东西</div>
+      <div>其他东西</div>
+      <div>其他东西</div>
     </RecommendWrapper>
   )
 }
