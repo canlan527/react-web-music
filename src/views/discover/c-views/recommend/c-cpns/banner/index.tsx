@@ -29,8 +29,8 @@ const Banner: FC<IProps> = memo(() => {
   function handleNext() {
     bannerRef.current?.next()
   }
-  function handleAfterChange(current: number) {
-    setCurIndex(current)
+  function handleBeforeChange(current: number, next: number) {
+    setCurIndex(next)
   }
   // 获取背景图片
   let bgImageUrl = banner[curIndex]?.imageUrl
@@ -39,7 +39,7 @@ const Banner: FC<IProps> = memo(() => {
   }
   return (
     <BannerWrapper style={{ background: `url(${bgImageUrl}) center center / 6000px` }}>
-      <Carousel ref={bannerRef} effect="fade" arrows prevArrow={<IconPrev />} nextArrow={<IconNext />} afterChange={handleAfterChange}>
+      <Carousel ref={bannerRef} effect="fade" arrows autoplay prevArrow={<IconPrev />} nextArrow={<IconNext />} beforeChange={handleBeforeChange}>
         {banner.map((item) => (
           <div key={item.imageUrl}>
             <img src={item.imageUrl} alt="" />

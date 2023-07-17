@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const BannerWrapper = styled.div`
   width: 100%;
   ${(props) => props.theme.mixin.flexCenter};
+  transition: 0.2s ease;
 
   .ant-carousel {
     width: 1080px;
