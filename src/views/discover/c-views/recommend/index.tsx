@@ -1,11 +1,12 @@
 import React, { memo, useEffect } from 'react'
 import type { FC, ReactNode } from 'react'
 import { useAppDispatch, useAppSelector } from '@/store'
-import { fetchBannersDataAction } from '@/store/modules/recommend'
+import { fetchBannersDataAction, fetchHotDataAction } from '@/store/modules/recommend'
 import { RecommendWrapper } from './style'
 
 import Banner from './c-cpns/banner'
 import Hot from './c-cpns/hot/index'
+
 interface IProps {
   children?: ReactNode
 }
@@ -16,6 +17,7 @@ const Recommend: FC<IProps> = () => {
 
   useEffect(() => {
     dispatch(fetchBannersDataAction())
+    dispatch(fetchHotDataAction())
   }, [])
 
   // 从rtk里拿数据
