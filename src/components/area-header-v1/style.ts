@@ -23,7 +23,8 @@ export const HeaderV1Wrapper = styled.div`
       .item {
         color: #424242;
         margin-right: 40px;
-        .active {
+        cursor: pointer;
+        &.active-text {
           color: ${(props) => props.theme.color.secondary};
         }
         &:hover {

@@ -16,5 +16,6 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'react/react-in-jsx-scope': 0,
+    "react/prop-types": 0,
   },
 }
