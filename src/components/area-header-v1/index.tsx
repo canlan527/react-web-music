@@ -1,16 +1,21 @@
 import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import { HeaderV1Wrapper } from './style'
 
 interface IProps {
   children?: ReactNode
+  title?: string
+  keylist?: string[]
+  hasMore?: boolean
+  moreLink?: string
 }
 
-const AreaHeaderV1: FC<IProps> = memo(() => {
-  const keylist = ['为你推荐', '华语', '流行']
+const AreaHeaderV1: FC<IProps> = memo((props: IProps) => {
+  const { title = '默认标题', keylist = [], hasMore = true, moreLink = '/' } = props
   return (
     <HeaderV1Wrapper>
-      <h2 className="hot-title">热门推荐</h2>
+      <h2 className="hot-title">{title}</h2>
       <div className="hot-keylist">
         <div className="keywords">
           {keylist.map((item, index) => (
@@ -19,12 +24,14 @@ const AreaHeaderV1: FC<IProps> = memo(() => {
             </div>
           ))}
         </div>
-        <div className="more">
-          <a className="more-text" href="">
-            更多
-          </a>
-          <i className="iconfont icon-next"></i>
-        </div>
+        {hasMore ? (
+          <div className="more">
+            <Link className="more-text" to={moreLink}>
+              更多
+            </Link>
+            <i className="iconfont icon-next"></i>
+          </div>
+        ) : null}
       </div>
     </HeaderV1Wrapper>
   )

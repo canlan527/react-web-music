@@ -10,7 +10,7 @@ interface IProps {
 const Hot: FC<IProps> = memo(() => {
   return (
     <HotWrapper>
-      <AreaHeaderV1 />
+      <AreaHeaderV1 title="热门推荐" keylist={['华语', '民谣', '摇滚', '流行', '电子']} moreLink="/discover/songs" />
     </HotWrapper>
   )
 })
