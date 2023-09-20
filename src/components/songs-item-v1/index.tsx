@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
 import { ItemWrapper } from './style'
-import { formatterNumber } from '@/utils'
+import { formatterNumber, getImageSize } from '@/utils'
 
 interface IProps {
   children?: ReactNode
@@ -14,17 +14,18 @@ type itemType = {
   id?: string
   picUrl?: string
   playCount?: string
+  width?: string | number
 }
 
-const SongsItem: FC<IProps> = memo((props) => {
+const SongsItemV1: FC<IProps> = memo((props) => {
   const { item } = props
   return (
-    <ItemWrapper>
+    <ItemWrapper itemwidth={item.width || 220}>
       <div className="hot-item" key={item.id}>
         <div className="item-top">
           <div className="item-img">
             <i className="iconfont icon-play"></i>
-            <img src={item.picUrl + '?param=220x220'} alt="" />
+            <img src={item.picUrl && getImageSize(item.picUrl, 220)} alt="" />
           </div>
           <div className="item-count">播放量 {item.playCount && formatterNumber(item.playCount)}</div>
         </div>
@@ -36,6 +37,6 @@ const SongsItem: FC<IProps> = memo((props) => {
   )
 })
 
-SongsItem.displayName = 'SongsItem'
+SongsItemV1.displayName = 'SongsItemV1'
 
-export default SongsItem
+export default SongsItemV1

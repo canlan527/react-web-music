@@ -1,23 +1,27 @@
 import styled from 'styled-components'
 
-export const ItemWrapper = styled.div`
+export interface ItemProps {
+  itemwidth: string
+}
 
+export const ItemWrapper = styled.div<ItemProps>`
   .hot-item {
     display: flex;
     flex-direction: column;
     margin: 0 20px 28px 0;
-    width: 220px;
+    width: ${(props: ItemProps) => props.itemwidth}px;
     transition: 0.2s ease;
-    .item-top {
+    .item-left {
       position: relative;
-      width: 220px;
+      width: ${(props: ItemProps) => props.itemwidth}px;
       border-radius: 4px;
       transition: 0.2s ease;
       cursor: pointer;
+      margin-right: 20px;
       .item-img {
         position: relative;
         width: 100%;
-        height: 220px;
+        height: ${(props: ItemProps) => props.itemwidth}px;
         margin-bottom: 12px;
         overflow: hidden;
         .iconfont {
@@ -28,12 +32,12 @@ export const ItemWrapper = styled.div`
           border-radius: 50%;
           opacity: 0;
           transition: 0.2s ease;
-          font-size: 56px;
+          font-size: 33px;
           color: #f5f5f5;
         }
         img {
           width: 100%;
-          height: 220px;
+          height: ${(props: ItemProps) => props.itemwidth}px;
           transition: all 0.2s ease;
           &:hover {
             transform: scale(1.2);
@@ -62,13 +66,14 @@ export const ItemWrapper = styled.div`
         margin-right: 0;
       }
     }
-    .item-bottom {
+    .item-right {
       font-size: 14px;
       color: #424242;
       .item-title {
-        display: flex;
         margin-bottom: 12px;
       }
-      
+      .item-name {
+        color: #777777;
+      }
     }
 `

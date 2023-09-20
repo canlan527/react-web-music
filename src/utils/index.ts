@@ -6,3 +6,7 @@ export function formatterNumber(number: number | string) {
     return number
   }
 }
+
+export function getImageSize(imgUrl: string, width: number, height: number = width) {
+  return imgUrl + `?param=${width}x${height}`
+}
