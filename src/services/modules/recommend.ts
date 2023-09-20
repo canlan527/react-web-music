@@ -14,3 +14,12 @@ export function getHotRecommend(limit = 30) {
     },
   })
 }
+
+export function getNewAlbum(limit = 20) {
+  return request.get({
+    url: '/album/list',
+    params: {
+      limit,
+    },
+  })
+}
