@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { HotWrapper } from './style'
 import AreaHeaderV1 from '@/components/area-header-v1'
 import { useAppSelector, appShallowEqual } from '@/store/index'
-import SongsItem from '@/components/songs-item'
+import SongsItemV1 from '@/components/songs-item-v1'
 
 interface IProps {
   children?: ReactNode
@@ -25,7 +25,7 @@ const Hot: FC<IProps> = memo(() => {
       <AreaHeaderV1 activeIndex={curIndex} title="热门推荐" keylist={['华语', '民谣', '摇滚', '流行', '电子']} moreLink="/discover/songs" />
       <div className="hot-recommend">
         {hot.map((item) => (
-          <SongsItem item={item} key={item.id} />
+          <SongsItemV1 item={item} key={item.id} />
         ))}
       </div>
     </HotWrapper>
