@@ -7,7 +7,7 @@ export const HotWrapper = styled.div`
     ${(props) => props.theme.mixin.flexSpaceBetween};
     align-items: flex-start;
     flex-wrap: wrap;
-    
+
     }
   }
 `

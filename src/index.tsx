@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 
 import 'normalize.css'
+import './assets/css/common.css'
 import './assets/css/reset.css'
 import './assets/fonts/iconfont.css'
 

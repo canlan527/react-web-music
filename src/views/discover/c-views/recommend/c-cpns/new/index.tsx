@@ -5,6 +5,7 @@ import { appShallowEqual, useAppSelector } from '@/store'
 import { Carousel } from 'antd'
 
 import AreaHeaderV1 from '@/components/area-header-v1'
+import NewAlbumItem from '@/components/new-album-item'
 import { NewWrapper } from './style'
 
 interface IProps {
@@ -13,12 +14,12 @@ interface IProps {
 
 const New: FC<IProps> = () => {
   const newRef = useRef<ElementRef<typeof Carousel>>(null)
-  // useAppSelector(
-  //   (state) => ({
-
-  //   }),
-  //   appShallowEqual
-  // )
+  const { newAlbum } = useAppSelector(
+    (state) => ({
+      newAlbum: state.recommend.newAlbum,
+    }),
+    appShallowEqual
+  )
 
   // icon组件
   const IconPrev = () => <i className="iconfont icon-prev" onClick={handlePrev} />
@@ -32,17 +33,34 @@ const New: FC<IProps> = () => {
     newRef.current?.next()
   }
 
+  const showLength = 5
+  const page = Math.ceil(newAlbum.length / showLength)
+
+  function ctrArr(num: number) {
+    const arr = []
+    for (let i = 0; i < num; i++) {
+      arr.push(i)
+    }
+    return arr
+  }
+
   return (
     <NewWrapper>
       <AreaHeaderV1 title="新碟上架" moreLink="/discover/newAlbum"></AreaHeaderV1>
       <div className="new-content">
         <div className="banner">
           <Carousel ref={newRef} dots={false} arrows prevArrow={<IconPrev />} nextArrow={<IconNext />}>
-            {[1, 2].map((item) => (
-              <h1 key={item} style={{ fontSize: '28px' }}>
-                {item}
-              </h1>
-            ))}
+            {ctrArr(page).map((page) => {
+              return (
+                <div key={page} className="new-album-content">
+                  <div className="new-album-list">
+                    {newAlbum.slice(page * showLength, (page + 1) * showLength).map((album) => (
+                      <NewAlbumItem key={album.albumId} item={album} />
+                    ))}
+                  </div>
+                </div>
+              )
+            })}
           </Carousel>
         </div>
       </div>

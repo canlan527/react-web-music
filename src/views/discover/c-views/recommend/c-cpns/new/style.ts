@@ -8,7 +8,16 @@ export const NewWrapper = styled.div`
     ${(props) => props.theme.mixin.flexSpaceBetween};
     align-items: flex-start;
     flex-wrap: wrap;
+    .new-album-content {
+      .new-album-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        margin-right: -10px;
+      }
+    }
   }
+
   .banner {
     // overflow: hidden;
 
