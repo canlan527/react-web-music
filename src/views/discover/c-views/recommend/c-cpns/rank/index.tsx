@@ -4,6 +4,7 @@ import AreaHeaderV1 from '@/components/area-header-v1'
 
 import { RankWrapper } from './style'
 import { useAppSelector } from '@/store'
+import RankList from '@/views/discover/c-cpns/rank-list'
 
 interface IProps {
   children?: ReactNode
@@ -17,9 +18,11 @@ const Rank: FC<IProps> = () => {
   return (
     <RankWrapper>
       <AreaHeaderV1 title="排行榜" moreLink="/discover/ranking" />
-      {rankList.map((item) => (
-        <h1 key={item.id}>{item.name}</h1>
-      ))}
+      <div className="rank-list">
+        {rankList.map((item) => (
+          <RankList key={item.id} item={item}></RankList>
+        ))}
+      </div>
     </RankWrapper>
   )
 }
