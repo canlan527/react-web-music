@@ -23,3 +23,12 @@ export function getNewAlbum(limit = 27) {
     },
   })
 }
+
+export function getRankList(id: number) {
+  return request.get({
+    url: '/playlist/detail',
+    params: {
+      id,
+    },
+  })
+}

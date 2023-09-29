@@ -40,7 +40,7 @@ export const NewAlbumItemWrapper = styled.div<ItemProps>`
     }
   }
   .new-album-item-info {
-    padding: 12px;
+    padding: 12px 0;
     .new-album-name {
       font-size: 14px;
       color: #555555;
