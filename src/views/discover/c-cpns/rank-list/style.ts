@@ -11,8 +11,7 @@ export const RankListWrapper = styled.div<ItemProps>`
   align-items: center;
   width: 196px;
   height: 500px;
-  background: url(${(props: ItemProps) => props.bgimg + '?imageView&blur=40x20'}) center center/6000px;
-  /* backdrop-filter: blur(50px); */
+  background: url(${(props: ItemProps) => props.bgimg + '?imageView&blur=40x20'});
   margin-right: 20px;
   padding: 20px;
   .rank-list-container {
