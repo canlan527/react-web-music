@@ -5,7 +5,6 @@ export interface ItemProps {
 }
 
 export const ItemWrapper = styled.div<ItemProps>`
-
   .hot-item {
     display: flex;
     flex-direction: column;
@@ -24,43 +23,45 @@ export const ItemWrapper = styled.div<ItemProps>`
         height: ${(props: ItemProps) => props.itemwidth}px;
         margin-bottom: 12px;
         overflow: hidden;
+        &:hover .item-img-box > img {
+          transition: all 0.3s ease-in;
+          transform: scale(1.1);
+        }
+        &:hover .iconfont {
+          transition: all 0.3s ease-in;
+          opacity: 1;
+        }
         .iconfont {
           position: absolute;
           top: 50%;
           left: 50%;
-          transform: translate(-50%, -50%) scale(0.3);
+          transform: translate(-50%, -50%);
           border-radius: 50%;
           opacity: 0;
           transition: 0.2s ease;
           font-size: 56px;
           color: #f5f5f5;
         }
-        img {
+        .item-img-box {
           width: 100%;
           height: ${(props: ItemProps) => props.itemwidth}px;
-          transition: all 0.2s ease;
-          &:hover {
-            transform: scale(1.2);
-          }
-        }
-        &:hover {
-          .iconfont {
-            transform: translate(-50%, -50%) scale(1.2);
-            opacity: 1;
-            z-index: 9;
+
+          img {
+            width: 100%;
+            height: ${(props: ItemProps) => props.itemwidth}px;
           }
         }
       }
       .item-count {
         position: absolute;
         bottom: 12px;
-        left:0px;
+        left: 0px;
         width: 100%;
         color: #fff;
         font-size: 14px;
         padding: 4px 0;
         text-align: center;
-        background: rgba(200, 200, 200, .3);
+        background: rgba(200, 200, 200, 0.3);
       }
       &:nth-child(4n) {
         margin-right: 0;
@@ -73,6 +74,6 @@ export const ItemWrapper = styled.div<ItemProps>`
         display: flex;
         margin-bottom: 12px;
       }
-
     }
+  }
 `
