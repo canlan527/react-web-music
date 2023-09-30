@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'iconfont'; /* Project id 2649892 */
-  src: url('iconfont.woff2?t=1686061624274') format('woff2'), url('iconfont.woff?t=1686061624274') format('woff'),
-    url('iconfont.ttf?t=1686061624274') format('truetype');
+  src: url('iconfont.woff2?t=1696043046458') format('woff2'), url('iconfont.woff?t=1696043046458') format('woff'),
+    url('iconfont.ttf?t=1696043046458') format('truetype');
 }
 
 .iconfont {
@@ -10,6 +10,38 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-67:before {
+  content: '\e68f';
+}
+
+.icon-zhibo-01:before {
+  content: '\e631';
+}
+
+.icon-pc:before {
+  content: '\e609';
+}
+
+.icon-ios:before {
+  content: '\e60c';
+}
+
+.icon-android:before {
+  content: '\e616';
+}
+
+.icon-jplayer:before {
+  content: '\e6c1';
+}
+
+.icon-microphone-fill:before {
+  content: '\e602';
+}
+
+.icon-shipinbofang:before {
+  content: '\e601';
 }
 
 .icon-search:before {

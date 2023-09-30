@@ -32,3 +32,9 @@ export function getRankList(id: number) {
     },
   })
 }
+
+export function getMVList() {
+  return request.get({
+    url: '/personalized/mv',
+  })
+}

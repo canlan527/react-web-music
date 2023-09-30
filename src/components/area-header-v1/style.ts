@@ -4,7 +4,7 @@ export const HeaderV1Wrapper = styled.div`
   width: 1080px;
   ${(props) => props.theme.mixin.flexCenter};
   flex-direction: column;
-  padding-bottom: 30px;
+  padding: 30px 0 20px;
   .hot-title {
     font-size: 28px;
     font-weight: bold;
