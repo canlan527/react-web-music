@@ -18,7 +18,7 @@ const MV: FC<IProps> = () => {
 
   return (
     <MVWrapper>
-      <AreaHeaderV1 title="MV"></AreaHeaderV1>
+      <AreaHeaderV1 title="MV精选" hasMore={false}></AreaHeaderV1>
       <div className="mv-list">
         {mvList.map((item) => (
           <div key={item.id} className="mv-list-item">
