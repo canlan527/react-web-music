@@ -27,7 +27,7 @@ const SongsItemV1: FC<IProps> = memo((props) => {
             <div className="item-img-box">
               <img src={item.picUrl && getImageSize(item.picUrl, 220)} alt="" />
             </div>
-            <i className="iconfont icon-play"></i>
+            <i className="iconfont icon-play-filling"></i>
           </div>
           <div className="item-count">播放量 {item.playCount && formatterNumber(item.playCount)}</div>
         </div>
