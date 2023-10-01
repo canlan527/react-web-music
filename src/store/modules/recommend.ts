@@ -77,6 +77,10 @@ const recommendSlice = createSlice({
         state.hot = payload.result
         // console.log(state.hot)
       }),
+      builder.addCase(fetchNewSongListAction.fulfilled, (state, { payload }) => {
+        state.newSongList = payload
+        // console.log(state.newSongList)
+      }),
       builder.addCase(fetchNewAlbumAction.fulfilled, (state, { payload }) => {
         state.newAlbum = payload.products
         // console.log(state.newAlbum)
@@ -88,10 +92,6 @@ const recommendSlice = createSlice({
       builder.addCase(fetchMVListAction.fulfilled, (state, { payload }) => {
         state.mvList = payload.result
         // console.log(state.mvList)
-      }),
-      builder.addCase(fetchNewSongListAction.fulfilled, (state, { payload }) => {
-        state.newSongList = payload
-        // console.log(state.newSongList)
       })
   },
 })
