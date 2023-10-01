@@ -5,75 +5,72 @@ export interface ItemProps {
 }
 
 export const ItemWrapper = styled.div<ItemProps>`
+  display: inline-block;
+  width: 33.333%;
   .hot-item {
     display: flex;
-    flex-direction: column;
     margin: 0 20px 28px 0;
-    width: ${(props: ItemProps) => props.itemwidth}px;
-    transition: 0.2s ease;
     .item-left {
       position: relative;
       width: ${(props: ItemProps) => props.itemwidth}px;
-      border-radius: 4px;
-      transition: 0.2s ease;
       cursor: pointer;
-      margin-right: 20px;
+      &:hover .item-img img {
+        transform: scale(1.1);
+        transition: all 0.2s ease-in;
+      }
+      &:hover .iconfont {
+        opacity: 1;
+        font-size: 32px;
+        margin: -16px 0 0 -16px;
+        transition: all 0.3s ease-in;
+      }
       .item-img {
-        position: relative;
         width: 100%;
         height: ${(props: ItemProps) => props.itemwidth}px;
-        margin-bottom: 12px;
         overflow: hidden;
-        .iconfont {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%) scale(0.3);
-          border-radius: 50%;
-          opacity: 0;
-          transition: 0.2s ease;
-          font-size: 33px;
-          color: #f5f5f5;
-        }
         img {
           width: 100%;
-          height: ${(props: ItemProps) => props.itemwidth}px;
-          transition: all 0.2s ease;
-          &:hover {
-            transform: scale(1.2);
-          }
-        }
-        &:hover {
-          .iconfont {
-            transform: translate(-50%, -50%) scale(1.2);
-            opacity: 1;
-            z-index: 9;
-          }
+          height: 100%;
         }
       }
-      .item-count {
+      .iconfont {
         position: absolute;
-        bottom: 12px;
-        left:0px;
-        width: 100%;
-        color: #fff;
-        font-size: 14px;
-        padding: 4px 0;
-        text-align: center;
-        background: rgba(200, 200, 200, .3);
-      }
-      &:nth-child(4n) {
-        margin-right: 0;
+        top: 50%;
+        left: 50%;
+        margin: -6px 0 0 -6px;
+        border-radius: 50%;
+        font-size: 12px;
+        color: #f5f5f5;
+        opacity: 0;
+        transition: all 0.2s ease-in;
       }
     }
     .item-right {
+      flex: 1;
+      display: flex;
       font-size: 14px;
       color: #424242;
-      .item-title {
-        margin-bottom: 12px;
+      margin-left: 12px;
+      .item-info {
+        flex: 1;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: start;
+        flex-direction: column;
+        .item-title {
+          margin-bottom: 12px;
+          cursor: pointer;
+          &:hover {
+            color: ${(props) => props.theme.color.secondary};
+          }
+        }
+        .item-name {
+          color: #777777;
+        }
       }
-      .item-name {
-        color: #777777;
+      .item-duration {
+        ${(props) => props.theme.mixin.flexCenter};
       }
     }
+  }
 `

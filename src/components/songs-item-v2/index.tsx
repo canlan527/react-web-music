@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
 import { ItemWrapper } from './style'
-import { getImageSize } from '@/utils'
+import { formatterDuration, getImageSize } from '@/utils'
 
 interface IProps {
   children?: ReactNode
@@ -12,8 +12,9 @@ type itemType = {
   key?: string
   id?: string
   picUrl?: string
-  songName?: string
+  name?: string
   singerName?: string
+  duration?: number
 }
 
 const SongsItemV2: FC<IProps> = memo((props) => {
@@ -23,13 +24,16 @@ const SongsItemV2: FC<IProps> = memo((props) => {
       <div className="hot-item" key={item.id}>
         <div className="item-left">
           <div className="item-img">
-            <i className="iconfont icon-play"></i>
             <img src={item.picUrl && getImageSize(item.picUrl, 86)} alt="" />
           </div>
+          <i className="iconfont icon-play"></i>
         </div>
         <div className="item-right">
-          <span className="item-title">{item.songName}</span>
-          <span className="item-name">{item.singerName}</span>
+          <div className="item-info">
+            <div className="item-title">{item.name}</div>
+            <div className="item-name">{item.singerName}</div>
+          </div>
+          <div className="item-duration">{formatterDuration(item.duration!)}</div>
         </div>
       </div>
     </ItemWrapper>
