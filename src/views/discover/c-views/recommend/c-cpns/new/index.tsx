@@ -7,6 +7,7 @@ import { Carousel } from 'antd'
 import AreaHeaderV1 from '@/components/area-header-v1'
 import NewAlbumItem from '@/components/new-album-item'
 import { NewWrapper } from './style'
+import { ctrBannerList } from '@/utils'
 
 interface IProps {
   children?: ReactNode
@@ -33,28 +34,17 @@ const New: FC<IProps> = () => {
     newRef.current?.next()
   }
 
-  const showLength = 5
-  const page = Math.ceil(newAlbum.length / showLength)
-
-  function ctrArr(num: number) {
-    const arr = []
-    for (let i = 0; i < num; i++) {
-      arr.push(i)
-    }
-    return arr
-  }
-
   return (
     <NewWrapper>
       <AreaHeaderV1 title="新碟上架" moreLink="/discover/newAlbum"></AreaHeaderV1>
       <div className="new-content">
         <div className="banner">
           <Carousel ref={newRef} dots={false} arrows prevArrow={<IconPrev />} nextArrow={<IconNext />}>
-            {ctrArr(page).map((page) => {
+            {ctrBannerList(5, newAlbum).map((page) => {
               return (
                 <div key={page} className="new-album-content">
                   <div className="new-album-list">
-                    {newAlbum.slice(page * showLength, (page + 1) * showLength).map((album) => (
+                    {newAlbum.slice(page * 5, (page + 1) * 5).map((album) => (
                       <NewAlbumItem key={album.albumId} item={album} />
                     ))}
                   </div>
