@@ -24,7 +24,11 @@ const NewAlbumItem: FC<IProps> = (props) => {
     <NewAlbumItemWrapper itemwidth={item.width ?? 180} key={item.albumId}>
       <div className="new-album-item-cover">
         <div className="cover">
-          <img src={item.coverUrl && getImageSize(item.coverUrl, 180)} alt="" />
+          <div className="item-mask"></div>
+          <div className="cover-img">
+            <img src={item.coverUrl && getImageSize(item.coverUrl, 180)} alt="" />
+          </div>
+          <i className="iconfont icon-play-filling"></i>
         </div>
         <div className="recordIcon-icon">
           <img src={recordIcon} alt="" />

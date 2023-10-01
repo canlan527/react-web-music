@@ -14,14 +14,46 @@ export const NewAlbumItemWrapper = styled.div<ItemProps>`
     width: 160px;
     margin-right: 12px;
     .cover {
+      position: relative;
       left: 0;
       width: 140px;
       height: 140px;
-      img {
-        width: 100%;
-        height: 100%;
-      }
       z-index: 100;
+      overflow: hidden;
+      &:hover .iconfont {
+        opacity: 1;
+        transition: all 0.3s ease-in;
+      }
+      &:hover .item-mask {
+        opacity: 1;
+        transition: all 0.2s ease-in;
+      }
+      .item-mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.1);
+        opacity: 0;
+      }
+      .cover-img {
+        width: 140px;
+        height: 140px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .iconfont {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 40px;
+        color: #f3f3f3;
+        opacity: 0;
+      }
     }
     .recordIcon-icon {
       position: absolute;
