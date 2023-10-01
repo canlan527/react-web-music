@@ -21,7 +21,8 @@ export const ItemWrapper = styled.div<ItemProps>`
       &:hover .iconfont {
         opacity: 1;
         font-size: 32px;
-        margin: -16px 0 0 -16px;
+        margin-left: -16px;
+        /* margin: -16px 0 0 -16px; */
         transition: all 0.3s ease-in;
       }
       .item-img {
