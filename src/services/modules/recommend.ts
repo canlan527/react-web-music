@@ -15,7 +15,7 @@ export function getHotRecommend(limit = 30) {
   })
 }
 
-export function getNewAlbum(limit = 27) {
+export function getNewAlbum(limit = 30) {
   return request.get({
     url: '/album/list',
     params: {
@@ -36,5 +36,14 @@ export function getRankList(id: number) {
 export function getMVList() {
   return request.get({
     url: '/personalized/mv',
+  })
+}
+
+export function getNewSongs(limit = 30) {
+  return request.get({
+    url: '/personalized/newsong',
+    params: {
+      limit,
+    },
   })
 }
