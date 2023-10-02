@@ -33,7 +33,7 @@ const NewSong: FC<IProps> = () => {
 
   return (
     <NewSongWrapper>
-      <AreaHeaderV1 title="新歌首发"></AreaHeaderV1>
+      <AreaHeaderV1 title="新歌首发" hasMore={false}></AreaHeaderV1>
       <div className="new-song-banner">
         <Carousel ref={newSongRef} arrows prevArrow={<IconPrev />} nextArrow={<IconNext />}>
           {ctrBannerList(6, newSongList).map((page) => (
