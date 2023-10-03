@@ -45,7 +45,7 @@ const Recommend: FC<IProps> = () => {
       <New />
       <MV />
       <Rank />
-      <div>其他东西</div>
+      {/* <div>其他东西</div> */}
     </RecommendWrapper>
   )
 }

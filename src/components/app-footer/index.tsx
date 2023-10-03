@@ -12,7 +12,7 @@ const AppFooter: FC<IProps> = () => {
       <div className="app-footer-container">
         <div className="app-footer-top">
           <div className="app-footer-sec1">
-            <div className="sec1-title">你可以在这些平台上查看网站</div>
+            {/* <div className="sec1-title">你可以在这些平台上查看网站</div> */}
             <ul className="sec1-ul">
               <li className="sec1-item">
                 <i className="iconfont icon-pc"></i>
@@ -29,7 +29,7 @@ const AppFooter: FC<IProps> = () => {
             </ul>
           </div>
           <div className="app-footer-sec1">
-            <div className="sec1-title">你可以在这些平台欣赏音乐</div>
+            {/* <div className="sec1-title">你可以在这些平台欣赏音乐</div> */}
             <ul className="sec1-ul">
               <li className="sec1-item">
                 <i className="iconfont icon-67"></i>
