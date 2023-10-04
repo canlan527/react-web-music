@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom'
 
 // demo 页面
 import Demo from '@/views/demo'
+import Player from '@/views/player'
 
 const Discover = lazy(() => import('@/views/discover'))
 const Focus = lazy(() => import('@/views/focus'))
@@ -66,6 +67,10 @@ const routes: RouteObject[] = [
   {
     path: '/mine',
     element: <Mine />,
+  },
+  {
+    path: '/discover/player',
+    element: <Player />,
   },
 ]
 
