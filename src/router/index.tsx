@@ -69,7 +69,7 @@ const routes: RouteObject[] = [
     element: <Mine />,
   },
   {
-    path: '/discover/player',
+    path: '/player',
     element: <Player />,
   },
 ]
