@@ -9,7 +9,9 @@ function App() {
     <div className="app" style={{ position: 'relative' }}>
       <AppHeader></AppHeader>
       <Suspense fallback="">
-        <div className="main">{useRoutes(routes)}</div>
+        <div className="main" style={{ minHeight: '100vh' }}>
+          {useRoutes(routes)}
+        </div>
       </Suspense>
       <AppFooter></AppFooter>
     </div>
