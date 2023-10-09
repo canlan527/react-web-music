@@ -4,8 +4,7 @@ import { Navigate } from 'react-router-dom'
 
 // demo 页面
 import Demo from '@/views/demo'
-import Player from '@/views/player'
-
+import Home from '@/views/home'
 const Discover = lazy(() => import('@/views/discover'))
 const Focus = lazy(() => import('@/views/focus'))
 const Mine = lazy(() => import('@/views/mine'))
@@ -20,57 +19,59 @@ const NewAlbum = lazy(() => import('@/views/discover/c-views/new-album'))
 const routes: RouteObject[] = [
   {
     path: '/',
-    element: <Navigate to="/discover" />,
+    element: <Navigate to="/home/discover/recommend" />,
   },
   {
-    path: '/demo',
-    element: <Demo />,
-  },
-  {
-    path: '/discover',
-    element: <Discover />,
+    path: '/home',
+    element: <Home />,
     children: [
       {
-        path: '/discover',
-        element: <Navigate to="/discover/recommend" />,
+        path: '/home/discover',
+        element: <Discover />,
+        children: [
+          {
+            path: '/home/discover',
+            element: <Navigate to="/home/discover/recommend" />,
+          },
+          {
+            path: '/home/discover/recommend',
+            element: <Recommend />,
+          },
+          {
+            path: '/home/discover/ranking',
+            element: <Ranking />,
+          },
+          {
+            path: '/home/discover/songs',
+            element: <Songs />,
+          },
+          {
+            path: '/home/discover/radioStation',
+            element: <RadioStation />,
+          },
+          {
+            path: '/home/discover/singer',
+            element: <Singer />,
+          },
+          {
+            path: '/home/discover/newAlbum',
+            element: <NewAlbum />,
+          },
+        ],
       },
       {
-        path: '/discover/recommend',
-        element: <Recommend />,
+        path: '/home/focus',
+        element: <Focus />,
       },
       {
-        path: '/discover/ranking',
-        element: <Ranking />,
-      },
-      {
-        path: '/discover/songs',
-        element: <Songs />,
-      },
-      {
-        path: '/discover/radioStation',
-        element: <RadioStation />,
-      },
-      {
-        path: '/discover/singer',
-        element: <Singer />,
-      },
-      {
-        path: '/discover/newAlbum',
-        element: <NewAlbum />,
+        path: '/home/mine',
+        element: <Mine />,
       },
     ],
   },
   {
-    path: '/focus',
-    element: <Focus />,
-  },
-  {
-    path: '/mine',
-    element: <Mine />,
-  },
-  {
-    path: '/player',
-    element: <Player />,
+    path: '/demo',
+    element: <Demo />,
   },
 ]
 
