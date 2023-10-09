@@ -2,17 +2,17 @@
   {
     "title": "发现音乐",
     "type": "path",
-    "link": "/discover"
+    "link": "/home/discover"
   },
   {
     "title": "关注",
     "type": "path",
-    "link": "/focus"
+    "link": "/home/focus"
   },
   {
     "title": "我的",
     "type": "path",
-    "link": "/mine"
+    "link": "/home/mine"
   },
   {
     "title": "开放平台",

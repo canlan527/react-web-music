@@ -1,26 +1,26 @@
 export const discoverMenuData = [
   {
     title: '推荐',
-    link: '/discover/recommend',
+    link: '/home/discover/recommend',
   },
   {
     title: '排行榜',
-    link: '/discover/ranking',
+    link: '/home/discover/ranking',
   },
   {
     title: '歌曲',
-    link: '/discover/songs',
+    link: '/home/discover/songs',
   },
   {
     title: '主播电台',
-    link: '/discover/radioStation',
+    link: '/home/discover/radioStation',
   },
   {
     title: '歌手',
-    link: '/discover/singer',
+    link: '/home/discover/singer',
   },
   {
     title: '新碟上架',
-    link: '/discover/newAlbum',
+    link: '/home/discover/newAlbum',
   },
 ]
