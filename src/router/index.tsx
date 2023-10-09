@@ -8,6 +8,7 @@ import Home from '@/views/home'
 const Discover = lazy(() => import('@/views/discover'))
 const Focus = lazy(() => import('@/views/focus'))
 const Mine = lazy(() => import('@/views/mine'))
+const Player = lazy(() => import('@/views/player'))
 // Discover子页面
 const Recommend = lazy(() => import('@/views/discover/c-views/recommend'))
 const Ranking = lazy(() => import('@/views/discover/c-views/ranking'))
@@ -68,6 +69,10 @@ const routes: RouteObject[] = [
         element: <Mine />,
       },
     ],
+  },
+  {
+    path: '/player',
+    element: <Player />,
   },
   {
     path: '/demo',
