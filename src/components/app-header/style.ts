@@ -44,7 +44,7 @@ export const HeaderLeft = styled.div`
       line-height: 90px;
 
       a {
-        display: inline-block;
+        display: block;
         padding: 0 12px;
         height: 100%;
         &:hover {
