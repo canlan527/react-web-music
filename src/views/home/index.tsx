@@ -4,6 +4,7 @@ import AppHeader from '@/components/app-header'
 import AppFooter from '@/components/app-footer'
 import { Outlet, useRoutes } from 'react-router-dom'
 import routes from '@/router'
+import { HomeWrapper } from './style'
 
 interface IProps {
   children?: ReactNode
@@ -11,16 +12,16 @@ interface IProps {
 
 const Home: FC<IProps> = () => {
   return (
-    <>
+    <HomeWrapper>
       <AppHeader></AppHeader>
       <Suspense fallback="">
-        <div className="main" style={{ minHeight: '100vh' }}>
+        <div className="main">
           {useRoutes(routes)}
           <Outlet />
         </div>
       </Suspense>
       <AppFooter></AppFooter>
-    </>
+    </HomeWrapper>
   )
 }
 
