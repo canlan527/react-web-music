@@ -38,6 +38,7 @@ export const HeaderLeft = styled.div`
     display: flex;
     .item {
       font-size: 18px;
+      width: 128px;
       height: 90px;
       text-align: center;
       padding: 0 20px;
