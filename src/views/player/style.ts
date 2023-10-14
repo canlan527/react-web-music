@@ -112,21 +112,37 @@ export const PlayerContainer = styled.div`
       .player_songlist_box {
         background-color: beige;
         width: 100%;
+
         .player_songlist {
           height: 756px;
+
           .player_songlist_header {
-            height: 46px;
-            background-color: bisque;
-            margin-bottom: 14px;
+            background-color: blue;
+            display: flex;
+            .songlist_header_checkbox {
+            }
+            .songlist_header_author {
+              width: 26%;
+            }
+            .songlist_header_time {
+            }
           }
           .player_songlist_content {
+            background-color: red;
             height: 100%;
             overflow-y: auto;
             overflow-x: hidden;
             .songlist_item {
-              background-color: lightskyblue;
-              height: 40px;
-              margin-bottom: 8px;
+              .songlist_item_checkbox {
+              }
+              .songlist_item_number {
+              }
+              .songlist_item_songname {
+              }
+              .songlist_item_artist {
+              }
+              .songlist_item_time {
+              }
             }
           }
         }
