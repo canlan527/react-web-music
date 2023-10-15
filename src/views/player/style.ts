@@ -69,11 +69,9 @@ export const PlayerContainer = styled.div`
     bottom: 18%;
     min-height: 328px;
     color: hsla(0, 0%, 88.2%, 0.8);
-    background: pink;
     cursor: default;
     .player_left {
       flex: 1;
-      background-color: orange;
       overflow: hidden;
       margin-right: 50px;
       .player_toolbar {
@@ -81,7 +79,6 @@ export const PlayerContainer = styled.div`
         justify-content: start;
         align-items: center;
         width: 100%;
-        background-color: blueviolet;
         margin-bottom: 12px;
         .toolbar_button {
           background-color: transparent;
@@ -110,14 +107,35 @@ export const PlayerContainer = styled.div`
         }
       }
       .player_songlist_box {
-        background-color: beige;
         width: 100%;
 
         .player_songlist {
           height: 756px;
-
+          /* col1 - col4 样式 */
+          li {
+            height: 50px;
+            line-height: 50px;
+            display: flex;
+          }
+          .col1 {
+            width: 50px;
+            ${(props) => props.theme.mixin.flexSpaceBetween};
+          }
+          .col2 {
+            width: 68%;
+            min-width: 620px;
+            ${(props) => props.theme.mixin.flexSpaceBetween};
+          }
+          .col3 {
+            width: 26%;
+          }
+          .col4 {
+            width: 50px;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+          }
           .player_songlist_header {
-            background-color: blue;
             display: flex;
             .songlist_header_checkbox {
             }
@@ -128,20 +146,77 @@ export const PlayerContainer = styled.div`
             }
           }
           .player_songlist_content {
-            background-color: red;
             height: 100%;
             overflow-y: auto;
             overflow-x: hidden;
+            font-size: 14px;
+            .iconfont {
+              opacity: 0;
+              font-size: 40px;
+              margin: 0 4px;
+              &:hover {
+                color: #fff;
+                cursor: pointer;
+              }
+            }
             .songlist_item {
+              color: hsla(0, 0%, 88.2%, 0.8);
+              transition: all 400ms ease;
+              &:nth-child(odd) {
+                background-color: rgba(0, 0, 0, 0.01);
+              }
+              &:hover .iconfont {
+                opacity: 1;
+              }
+              &:hover .sontlist_item_time_text {
+                display: none;
+              }
+              &:hover .songlist_item_time .iconfont {
+                display: block;
+              }
               .songlist_item_checkbox {
               }
               .songlist_item_number {
+                padding: 0 4px;
               }
               .songlist_item_songname {
+                padding-right: 8px;
+                a {
+                  color: hsla(0, 0%, 88.2%, 0.8);
+                }
+                .songlist_item_songname_left {
+                  max-width: 85%;
+                  max-height: 50px;
+                  box-sizing: border-box;
+                  float: left;
+                  overflow: hidden;
+                  &:hover .songlist_item_songname_text {
+                    color: #fff;
+                  }
+                  .songlist_item_songname_text {
+                  }
+                  .songlist_item_songname_mv {
+                    font-size: 12px;
+                    color: ${(props) => props.theme.color.secondary};
+                    border: 1px solid ${(props) => props.theme.color.secondary};
+                    margin: 0 8px;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                  }
+                }
               }
               .songlist_item_artist {
+                a {
+                  color: hsla(0, 0%, 88.2%, 0.8);
+                  &:hover {
+                    color: #fff;
+                  }
+                }
               }
               .songlist_item_time {
+                .iconfont {
+                  display: none;
+                }
               }
             }
           }
@@ -150,7 +225,6 @@ export const PlayerContainer = styled.div`
     }
     .player_right {
       width: 440px;
-      background-color: tan;
       text-align: center;
       line-height: 24px;
     }

@@ -55,21 +55,23 @@ const Player: FC<IProps> = () => {
                     </div>
 
                     <div className="col2 songlist_item_songname">
-                      <a href="/" target="_blank" className="songlist_item_songname_text">
-                        野蔷薇
-                      </a>
-                      <a href="/" target="_blank" className="songlist_item_songname_mv">
-                        MV
-                      </a>
+                      <div className="songlist_item_songname_left ellipsis">
+                        <a href="/" target="_blank" className="songlist_item_songname_text">
+                          乘风破浪第三季 张俪、王紫璇、于文文、张蔷、《野蔷薇》
+                        </a>
+                        <a href="/" target="_blank" className="songlist_item_songname_mv">
+                          MV
+                        </a>
+                      </div>
                       <div className="songlist_item_songname_iconmenu">
                         <i className="iconfont icon-like"></i>
                         <i className="iconfont icon-play_circle"></i>
                         <i className="iconfont icon-add_circle"></i>
                       </div>
                     </div>
-                    <div className="col3 songlist_item_artist">
+                    <div className="col3 songlist_item_artist ellipsis">
                       <a href="/" target="_blank">
-                        乘风破浪三
+                        于文文/刘恋/赵梦/张蔷/唐诗逸
                       </a>
                     </div>
                     <div className="col4 songlist_item_time">
@@ -77,8 +79,6 @@ const Player: FC<IProps> = () => {
                       <i className="iconfont icon-delete-circle"></i>
                     </div>
                   </li>
-                  <li className="songlist_item"></li>
-                  <li className="songlist_item"></li>
                 </ul>
               </div>
             </div>
