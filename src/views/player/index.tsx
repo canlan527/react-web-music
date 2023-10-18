@@ -47,7 +47,7 @@ const Player: FC<IProps> = () => {
                 </ul>
                 <ul className="player_songlist_content">
                   <li className="songlist_item">
-                    <div className="col1 songlist_item_checkbox">
+                    <div className="col1 songlist_item_checkbox checked">
                       <input type="checkbox" />
                     </div>
                     <div className="songlist_item_number">1</div>

@@ -146,8 +146,8 @@ export const PlayerContainer = styled.div`
             left: 0;
             top: 50%;
             margin-top: -9px;
-            width: 14px;
-            height: 14px;
+            width: 15px;
+            height: 15px;
             line-height: 14px;
             border: 1px solid hsla(0, 0%, 88.2%, 0.2);
             background-position: -1000px;
@@ -155,6 +155,13 @@ export const PlayerContainer = styled.div`
               url(https://y.qq.com/ryqq/static/media/icon_sprite.630b3e60.png?max_age=2592000) 1x,
               url(https://y.qq.com/ryqq/static/media/icon_sprite@2x.bf4cef49.png?max_age=2592000) 2x
             );
+            &:hover {
+              border-color: #fff;
+            }
+            &.checked {
+              border-color: #fff;
+              background-position: -60px -80px;
+            }
 
             input {
               width: 14px;
