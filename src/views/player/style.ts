@@ -96,9 +96,20 @@ export const PlayerContainer = styled.div`
           white-space: nowrap;
           box-sizing: border-box;
           overflow: hidden;
+          &:hover {
+            border-color: #fff;
+            cursor: pointer;
+          }
+          &:hover span {
+            color: #fff;
+          }
+          &:hover i.iconfont {
+            color: #fff;
+          }
           .iconfont {
-            opacity: 0.6;
+            color: hsla(0, 0%, 100%, 0.2);
             font-size: 16px;
+            font-weight: bolder;
             margin-right: 4px;
           }
           span {
