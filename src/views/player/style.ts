@@ -392,5 +392,8 @@ export const PlayerContainer = styled.div`
     }
   }
   .player_footer {
+    bottom: 0;
+    left: 0;
+    height: 11%;
   }
 `
