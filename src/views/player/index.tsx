@@ -236,9 +236,6 @@ const Player: FC<IProps> = () => {
             <i className="iconfont icon-next"></i>
           </a>
           <div className="player_progress_control"></div>
-          <a href="" className="btn_prev">
-            <i className="iconfont icon-prev"></i>
-          </a>
           <a href="" className="btn_playmode">
             <i className="iconfont icon-playmode"></i>
           </a>
@@ -248,7 +245,12 @@ const Player: FC<IProps> = () => {
           <a href="" className="btn_comment">
             <i className="iconfont icon-comment"></i>
           </a>
-          <div className="player_voice_control"></div>
+          <div className="player_voice_control">
+            <a href="" className='btn_voice'></a>
+            <div className="player_voice_progress">
+              <i className="iconfont progress_dot"></i>
+            </div>
+          </div>
         </div>
       </PlayerContainer>
     </PlayerWrapper>

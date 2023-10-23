@@ -395,5 +395,34 @@ export const PlayerContainer = styled.div`
     bottom: 0;
     left: 0;
     height: 11%;
+    .btn_prev,
+    .btn_play,
+    .btn_next,
+    .btn_playmode,
+    .btn_like,
+    .btn_comment {
+      
+    }
+
+    .btn_prev {
+      top: 4px;
+      left: 0;
+      width: 19px;
+      height: 20px;
+      background-position: 0 -30px;
+    }
+    .btn_play {
+      top: 0;
+      left: 65px;
+      width: 21px;
+      height: 29px;
+      background-position: 0 0;
+    }
+    .btn_next {
+      top: 4px;
+      left: 132px;
+      width: 19px;
+      height: 20px;
+    }
   }
 `
