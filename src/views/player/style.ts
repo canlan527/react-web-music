@@ -395,13 +395,35 @@ export const PlayerContainer = styled.div`
     bottom: 0;
     left: 0;
     height: 11%;
+
+    .iconfont {
+      font: 0/0 a;
+    }
+
     .btn_prev,
     .btn_play,
     .btn_next,
     .btn_playmode,
     .btn_like,
-    .btn_comment {
-      
+    .btn_comment,
+    .btn_voice {
+      position: absolute;
+      background-image: -webkit-image-set(
+        url(/ryqq/static/media/player.a628799e.png?max_age=2592000) 1x,
+        url(/ryqq/static/media/player@2x.41e8450a.png?max_age=2592000) 2x
+      );
+      opacity: 0.8;
+    }
+
+    .btn_prev:hover,
+    .btn_play:hover,
+    .btn_next:hover,
+    .btn_playmode:hover,
+    .btn_like:hover,
+    .btn_comment:hover,
+    .btn_voice:hover {
+      opacity: 1;
+      filter: none;
     }
 
     .btn_prev {
@@ -423,6 +445,14 @@ export const PlayerContainer = styled.div`
       left: 132px;
       width: 19px;
       height: 20px;
+      background-position: 0 -52px;
+    }
+    .btn_playmode {
+      top: 4px;
+      right: 378px;
+      width: 25px;
+      height: 19px;
+      background-position: 0 -74px;
     }
   }
 `

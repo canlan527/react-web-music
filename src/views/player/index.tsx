@@ -227,28 +227,28 @@ const Player: FC<IProps> = () => {
         </div>
         <div className="player_item player_footer">
           <a href="" className="btn_prev">
-            <i className="iconfont icon-prev"></i>
+            <i className="iconfont"></i>
           </a>
           <a href="" className="btn_play">
-            <i className="iconfont icon-play"></i>
+            <i className="iconfont"></i>
           </a>
           <a href="" className="btn_next">
-            <i className="iconfont icon-next"></i>
+            <i className="iconfont"></i>
           </a>
           <div className="player_progress_control"></div>
           <a href="" className="btn_playmode">
-            <i className="iconfont icon-playmode"></i>
+            <i className="iconfont"></i>
           </a>
           <a href="" className="btn_like">
-            <i className="iconfont icon-like"></i>
+            <i className="iconfont"></i>
           </a>
           <a href="" className="btn_comment">
-            <i className="iconfont icon-comment"></i>
+            <i className="iconfont"></i>
           </a>
           <div className="player_voice_control">
-            <a href="" className='btn_voice'></a>
+            <a href="" className="btn_voice"></a>
             <div className="player_voice_progress">
-              <i className="iconfont progress_dot"></i>
+              <i className="iconfont"></i>
             </div>
           </div>
         </div>
