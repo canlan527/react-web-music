@@ -235,7 +235,20 @@ const Player: FC<IProps> = () => {
           <a href="" className="btn_next">
             <i className="iconfont"></i>
           </a>
-          <div className="player_progress_control"></div>
+          <div className="player_progress_control">
+            <div className="player_music_info ellipsis">
+              <a href="">Dear Santa</a> - <a href="">OneRepublic</a>
+            </div>
+            <div className="player_music_time">2:11 / 3:30</div>
+            <div className="player_progress">
+              <div className="player_progress__inner">
+                <div className="player_progerss_load"></div>
+                <div className="player_progerss_play">
+                  <i className="player_progress_dot"></i>
+                </div>
+              </div>
+            </div>
+          </div>
           <a href="" className="btn_playmode">
             <i className="iconfont"></i>
           </a>
@@ -247,8 +260,10 @@ const Player: FC<IProps> = () => {
           </a>
           <div className="player_voice_control">
             <a href="" className="btn_voice"></a>
-            <div className="player_voice_progress">
-              <i className="iconfont"></i>
+            <div className="player_vioce_inner">
+              <div className="player_voice_progress">
+                <i className="iconfont player_voice_dot"></i>
+              </div>
             </div>
           </div>
         </div>
