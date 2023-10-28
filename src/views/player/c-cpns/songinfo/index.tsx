@@ -4,27 +4,29 @@ import { PlaySonginfoWrapper } from './style'
 
 interface IProps {
   children?: ReactNode
+  currentSong: any
 }
 
-const PlayerSonginfo: FC<IProps> = () => {
+const PlayerSonginfo: FC<IProps> = (props) => {
+  const { currentSong } = props
   return (
     <PlaySonginfoWrapper>
       <div className="player_right">
         <div className="song_info">
           <a className="song_info_cover">
-            <img className="song_info_pic" src="https://y.qq.com/music/photo_new/T002R300x300M000001vZNL53OG2jp_1.jpg?max_age=2592000" alt="" />
+            <img className="song_info_pic" src={currentSong.al.picUrl} alt="" />
           </a>
           <div className="song_info_item song_info_name ellipsis">
             歌曲名：
-            <a href="">乘风破浪第三季 张俪、王紫璇、于文文、张蔷、《野蔷薇》</a>
+            <a href="">{currentSong.name}</a>
           </div>
           <div className="song_info_item song_info_singer ellipsis">
             歌手：
-            <a href="">乘风破浪三</a>
+            <a href="">{currentSong.ar[0].name}</a>
           </div>
           <div className="song_info_item song_info_album ellipsis">
             专辑：
-            <a href="">乘风破浪 第三季| 姐姐们来了</a>
+            <a href="">{currentSong.al.name}</a>
           </div>
         </div>
         <div className="song_lyric">

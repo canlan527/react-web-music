@@ -8,7 +8,7 @@ const store = configureStore({
   reducer: {
     demo: DemoSlice,
     recommend: recommendSlice,
-    player: playerSlice
+    player: playerSlice,
   },
 })
 export type RootType = ReturnType<typeof store.getState>
