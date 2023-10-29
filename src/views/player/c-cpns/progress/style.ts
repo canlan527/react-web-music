@@ -93,7 +93,7 @@ export const PlayProgressWrapper = styled.div<IPlayProgressWrapper>`
             background: hsla(0, 0%, 100%, 0.2);
           }
           .player_progerss_play {
-            width: 77.47%;
+            width: 0.2%;
             margin-left: 0px;
             position: absolute;
             top: 0;

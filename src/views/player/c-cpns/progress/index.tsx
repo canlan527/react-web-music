@@ -13,7 +13,10 @@ interface IProps {
 const PlayerProgress: FC<IProps> = (props) => {
   // 组件内部的数据
   const audioRef = useRef<HTMLAudioElement>(null)
+  const playProgressRef = useRef<HTMLDivElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [playProgress, setPlayProgress] = useState(0)
+  const [duration, setDuration] = useState(0)
 
   // 从props获取数据
   const { currentSong } = props
@@ -27,16 +30,20 @@ const PlayerProgress: FC<IProps> = (props) => {
   // )
 
   // 组件内的副作用操作
-  console.log(currentSong.id)
+  // console.log(currentSong.id)
   useEffect(() => {
     // 1. 音乐播放，以 src 赋予 Audio
     audioRef.current!.src = getSongUrl(currentSong.id)
     audioRef.current
       ?.play()
       .then((res) => {
+        setIsPlaying(true)
+        setDuration(currentSong.dt)
+        setPlayProgress(0)
         console.log('歌曲播放成功')
       })
       .catch((e) => {
+        setIsPlaying(false)
         console.log('歌曲播放失败', e)
       })
   }, [currentSong.id]) // 依赖
@@ -49,6 +56,18 @@ const PlayerProgress: FC<IProps> = (props) => {
 
     // 2. 改变isplaying的状态
     setIsPlaying(!isPlaying)
+  }
+
+  // 音乐播放的进度处理
+  function handleTimeUpdate() {
+    // 1. 获取当前的播放时间
+    const currentTime = audioRef.current?.currentTime
+    // 2. 计算当前歌曲的播放进度 ：将播放进度 * 1000 转成毫秒，除以duration， 乘以100，变为类似50%的结果
+    const progress = Number((((currentTime! * 1000) / duration) * 100).toFixed(2))
+    // 3. 设置进度
+    setPlayProgress(progress)
+    // 4. 操作DOM
+    playProgressRef.current!.style.width = `${progress}%`
   }
 
   return (
@@ -71,7 +90,7 @@ const PlayerProgress: FC<IProps> = (props) => {
           <div className="player_progress">
             <div className="player_progress__inner">
               <div className="player_progerss_load"></div>
-              <div className="player_progerss_play">
+              <div className="player_progerss_play" ref={playProgressRef}>
                 <i className="player_progress_dot"></i>
               </div>
             </div>
@@ -95,7 +114,7 @@ const PlayerProgress: FC<IProps> = (props) => {
           </div>
         </div>
       </div>
-      <audio ref={audioRef} />
+      <audio ref={audioRef} onTimeUpdate={handleTimeUpdate} />
     </PlayProgressWrapper>
   )
 }
