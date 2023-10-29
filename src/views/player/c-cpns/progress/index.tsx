@@ -1,19 +1,61 @@
-import React, { memo } from 'react'
+import React, { memo, useRef, useEffect, useState } from 'react'
 import type { FC, ReactNode } from 'react'
 import { PlayProgressWrapper } from './style'
+import { getSongUrl } from '@/utils/handle-player'
+import { formatterDuration } from '@/utils'
+import { appShallowEqual, useAppSelector } from '@/store'
 
 interface IProps {
   children?: ReactNode
+  currentSong?: any
 }
 
-const PlayerProgress: FC<IProps> = () => {
+const PlayerProgress: FC<IProps> = (props) => {
+  // 组件内部的数据
+  const audioRef = useRef<HTMLAudioElement>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  // 从props获取数据
+  // const { currentSong } = props
+
+  // 从store获取数据
+  const { currentSong } = useAppSelector(
+    (state) => ({
+      currentSong: state.player.currentSong,
+    }),
+    appShallowEqual
+  )
+
+  // 组件内的副作用操作
+  console.log(currentSong.id)
+  useEffect(() => {
+    // 1. 音乐播放，以 src 赋予 Audio
+    audioRef.current!.src = getSongUrl(currentSong.id)
+    audioRef.current
+      ?.play()
+      .then((res) => {
+        console.log('歌曲播放成功')
+      })
+      .catch((e) => {
+        console.log('歌曲播放失败', e)
+      })
+  }, [currentSong.id]) // 依赖
+
+  // 组件内部事件处理
+  // 歌曲播放处理
+  function handlePlaying() {
+    audioRef.current!.src = getSongUrl(currentSong.id)
+    audioRef.current?.play()
+    console.log(audioRef.current!.src)
+  }
+
   return (
     <PlayProgressWrapper>
       <div className="player_item player_footer">
         <a href="" className="btn_prev">
           <i className="iconfont"></i>
         </a>
-        <a href="" className="btn_play">
+        <a className="btn_play" onClick={handlePlaying}>
           <i className="iconfont"></i>
         </a>
         <a href="" className="btn_next">
@@ -23,7 +65,7 @@ const PlayerProgress: FC<IProps> = () => {
           <div className="player_music_info ellipsis">
             <a href="">Dear Santa</a> - <a href="">OneRepublic</a>
           </div>
-          <div className="player_music_time">2:11 / 3:30</div>
+          <div className="player_music_time">2:11 / {formatterDuration(currentSong.dt)}</div>
           <div className="player_progress">
             <div className="player_progress__inner">
               <div className="player_progerss_load"></div>
@@ -51,6 +93,7 @@ const PlayerProgress: FC<IProps> = () => {
           </div>
         </div>
       </div>
+      <audio ref={audioRef} />
     </PlayProgressWrapper>
   )
 }

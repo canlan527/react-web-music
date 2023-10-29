@@ -32,7 +32,7 @@ const Player: FC<IProps> = () => {
             <PlayerSonginfo currentSong={currentSong} />
           </div>
         </div>
-        <PlayerProgress />
+        <PlayerProgress currentSong={currentSong} />
       </PlayerContainer>
     </PlayerWrapper>
   )
