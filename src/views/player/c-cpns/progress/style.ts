@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const PlayProgressWrapper = styled.div`
+interface IPlayProgressWrapper {
+  $isplaying: boolean
+}
+
+export const PlayProgressWrapper = styled.div<IPlayProgressWrapper>`
   .player_footer {
     bottom: 0;
     left: 0;
@@ -50,7 +54,7 @@ export const PlayProgressWrapper = styled.div`
       left: 65px;
       width: 21px;
       height: 29px;
-      background-position: 0 0;
+      background-position: ${(props) => (props.$isplaying ? '-30px' : 0)} 0;
     }
     .btn_next {
       top: 4px;

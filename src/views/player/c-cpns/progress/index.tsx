@@ -16,15 +16,15 @@ const PlayerProgress: FC<IProps> = (props) => {
   const [isPlaying, setIsPlaying] = useState(false)
 
   // 从props获取数据
-  // const { currentSong } = props
+  const { currentSong } = props
 
   // 从store获取数据
-  const { currentSong } = useAppSelector(
-    (state) => ({
-      currentSong: state.player.currentSong,
-    }),
-    appShallowEqual
-  )
+  // const { currentSong } = useAppSelector(
+  //   (state) => ({
+  //     currentSong: state.player.currentSong,
+  //   }),
+  //   appShallowEqual
+  // )
 
   // 组件内的副作用操作
   console.log(currentSong.id)
@@ -44,13 +44,15 @@ const PlayerProgress: FC<IProps> = (props) => {
   // 组件内部事件处理
   // 歌曲播放处理
   function handlePlaying() {
-    audioRef.current!.src = getSongUrl(currentSong.id)
-    audioRef.current?.play()
-    console.log(audioRef.current!.src)
+    // 1. 控制播放器的播放和暂停
+    isPlaying ? audioRef.current?.pause() : audioRef.current?.play().catch(() => setIsPlaying(false))
+
+    // 2. 改变isplaying的状态
+    setIsPlaying(!isPlaying)
   }
 
   return (
-    <PlayProgressWrapper>
+    <PlayProgressWrapper $isplaying={isPlaying}>
       <div className="player_item player_footer">
         <a href="" className="btn_prev">
           <i className="iconfont"></i>

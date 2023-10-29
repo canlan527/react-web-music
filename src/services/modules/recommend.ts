@@ -47,3 +47,12 @@ export function getNewSongs(limit = 30) {
     },
   })
 }
+
+export function getSongDetail(ids: number) {
+  return request.get({
+    url: '/song/detail',
+    params: {
+      ids,
+    },
+  })
+}
