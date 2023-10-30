@@ -80,6 +80,7 @@ export const PlayProgressWrapper = styled.div<IPlayProgressWrapper>`
       }
       .player_progress {
         padding-top: 6px;
+        padding-bottom: 10px;
         height: 8px;
         cursor: pointer;
         .player_progress__inner {

@@ -1,5 +1,5 @@
 import React, { memo, useRef, useEffect, useState } from 'react'
-import type { FC, ReactNode } from 'react'
+import type { FC, ReactNode, MouseEvent } from 'react'
 import { PlayProgressWrapper } from './style'
 import { getSongUrl } from '@/utils/handle-player'
 import { formatterDuration } from '@/utils'
@@ -14,6 +14,7 @@ const PlayerProgress: FC<IProps> = (props) => {
   // 组件内部的数据
   const audioRef = useRef<HTMLAudioElement>(null)
   const playProgressRef = useRef<HTMLDivElement>(null)
+  const playProgressWrapperRef = useRef<HTMLDivElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [playProgress, setPlayProgress] = useState(0)
   const [duration, setDuration] = useState(0)
@@ -58,6 +59,29 @@ const PlayerProgress: FC<IProps> = (props) => {
     // 2. 改变isplaying的状态
     setIsPlaying(!isPlaying)
   }
+  // 3. 处理 progress 点击事件
+  function handlePlayProgress(e: MouseEvent<HTMLDivElement>) {
+    console.log('handlePlayProgress')
+    // 点击的x点位置
+    const offsetX = e.nativeEvent.offsetX
+    // progress的实际宽度
+    const width = playProgressWrapperRef.current!.getBoundingClientRect().width
+    // 点击位置的百分比结果
+    let progress = Number(((offsetX / width) * 100).toFixed(2))
+    if (progress > 100) {
+      progress = 100
+    }
+    // 获取点击位置的时间
+    const currentTime = (progress / 100) * duration
+    // 设置歌曲播放进度
+    audioRef.current!.currentTime = Number((currentTime / 1000).toFixed(2))
+    // 设置进度时间
+    setCurrentTime(currentTime)
+    // 设置播放进度
+    setPlayProgress(progress)
+    // 设置宽度样式
+    setPlayProgressWidth(progress)
+  }
 
   // 音乐播放的进度处理
   function handleTimeUpdate() {
@@ -70,6 +94,11 @@ const PlayerProgress: FC<IProps> = (props) => {
     // 5. 设置currentTime
     setCurrentTime(parseInt(currentTime.toString()))
     // 4. 操作DOM
+    setPlayProgressWidth(progress)
+  }
+
+  // 设置playProgress的dom宽度
+  function setPlayProgressWidth(progress: number) {
     playProgressRef.current!.style.width = `${progress}%`
   }
 
@@ -92,7 +121,7 @@ const PlayerProgress: FC<IProps> = (props) => {
           <div className="player_music_time">
             {formatterDuration(currentTime)} / {formatterDuration(currentSong.dt)}
           </div>
-          <div className="player_progress">
+          <div className="player_progress" ref={playProgressWrapperRef} onClick={handlePlayProgress}>
             <div className="player_progress__inner">
               <div className="player_progerss_load"></div>
               <div className="player_progerss_play" ref={playProgressRef}>
