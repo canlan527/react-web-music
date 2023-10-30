@@ -13,13 +13,18 @@ export function getImageSize(imgUrl: string, width: number, height: number = wid
 
 export function formatterDuration(duration: number) {
   // duration ms  1s = 1000ms
-  const min = Math.floor(duration / 60000)
-  const sec = Math.floor(duration % 60)
+  console.log(duration)
+  // 将毫秒转成秒
+  const timeSeconds = duration / 1000
+  const min = Math.floor(timeSeconds / 60)
+  const sec = Math.floor(timeSeconds % 60)
+  console.log(min, sec)
   return `${parse0(min)}: ${parse0(sec)}`
 }
 
 export function parse0(number: number | string) {
   number = Number(number)
+  console.log(number)
   return number < 10 ? '0' + number : number
 }
 

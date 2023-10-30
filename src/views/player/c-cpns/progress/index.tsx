@@ -17,6 +17,7 @@ const PlayerProgress: FC<IProps> = (props) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [playProgress, setPlayProgress] = useState(0)
   const [duration, setDuration] = useState(0)
+  const [currentTime, setCurrentTime] = useState(0)
 
   // 从props获取数据
   const { currentSong } = props
@@ -61,11 +62,13 @@ const PlayerProgress: FC<IProps> = (props) => {
   // 音乐播放的进度处理
   function handleTimeUpdate() {
     // 1. 获取当前的播放时间
-    const currentTime = audioRef.current?.currentTime
+    const currentTime = audioRef.current!.currentTime * 1000
     // 2. 计算当前歌曲的播放进度 ：将播放进度 * 1000 转成毫秒，除以duration， 乘以100，变为类似50%的结果
-    const progress = Number((((currentTime! * 1000) / duration) * 100).toFixed(2))
+    const progress = Number(((currentTime / duration) * 100).toFixed(2))
     // 3. 设置进度
     setPlayProgress(progress)
+    // 5. 设置currentTime
+    setCurrentTime(parseInt(currentTime.toString()))
     // 4. 操作DOM
     playProgressRef.current!.style.width = `${progress}%`
   }
@@ -86,7 +89,9 @@ const PlayerProgress: FC<IProps> = (props) => {
           <div className="player_music_info ellipsis">
             <a href="">Dear Santa</a> - <a href="">OneRepublic</a>
           </div>
-          <div className="player_music_time">2:11 / {formatterDuration(currentSong.dt)}</div>
+          <div className="player_music_time">
+            {formatterDuration(currentTime)} / {formatterDuration(currentSong.dt)}
+          </div>
           <div className="player_progress">
             <div className="player_progress__inner">
               <div className="player_progerss_load"></div>
