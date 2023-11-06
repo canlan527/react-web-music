@@ -78,7 +78,29 @@ export const PlayProgressWrapper = styled.div<IPlayProgressWrapper>`
         top: 0;
         right: 0;
       }
-      .player_progress {
+      :where(.css-dev-only-do-not-override-dfjnss).ant-slider .ant-slider-track {
+        position: absolute;
+        background-color: hsla(0, 0%, 100%, 0.7);
+        border-radius: 2px;
+        transition: background-color 0.2s;
+      }
+      :where(.css-dev-only-do-not-override-dfjnss).ant-slider-horizontal .ant-slider-rail {
+        width: 100%;
+        height: 2px;
+      }
+      :where(.css-dev-only-do-not-override-dfjnss).ant-slider-horizontal .ant-slider-track {
+        height: 2px;
+      }
+      :where(.css-dev-only-do-not-override-dfjnss).ant-slider .ant-slider-handle:hover::after,
+      :where(.css-dev-only-do-not-override-dfjnss).ant-slider .ant-slider-handle:active::after,
+      :where(.css-dev-only-do-not-override-dfjnss).ant-slider .ant-slider-handle:focus::after {
+        box-shadow: none;
+      }
+
+      :where(.css-dev-only-do-not-override-dfjnss).ant-slider .ant-slider-handle::after {
+        box-shadow: none;
+      }
+      /* .player_progress {
         padding-top: 6px;
         padding-bottom: 10px;
         height: 8px;
@@ -112,7 +134,7 @@ export const PlayProgressWrapper = styled.div<IPlayProgressWrapper>`
             }
           }
         }
-      }
+      } */
     }
     .btn_playmode {
       top: 4px;
