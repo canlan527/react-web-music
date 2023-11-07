@@ -61,24 +61,6 @@ const PlayerProgress: FC<IProps> = (props) => {
     // 2. 改变isplaying的状态
     setIsPlaying(!isPlaying)
   }
-  // 3. 处理 progress 点击事件
-  function handlePlayProgress(e: MouseEvent<HTMLDivElement>) {
-    // 点击的x点位置
-    const offsetX = e.nativeEvent.offsetX
-    getDotPosition(offsetX)
-  }
-
-  // 封装根据offsetX值确定dot位置的方法
-  function getDotPosition(x: number, isPlay = true) {
-    // progress的实际宽度
-    const width = playProgressWrapperRef.current!.getBoundingClientRect().width
-    // 点击位置的百分比结果
-    let progress = Number(((x / width) * 100).toFixed(2))
-    if (progress > 100) {
-      progress = 100
-    }
-    isPlay && setSongPlay(progress)
-  }
 
   // 封装歌曲播放方法
   function setSongPlay(progress: number) {
@@ -92,9 +74,6 @@ const PlayerProgress: FC<IProps> = (props) => {
     setCurrentTime(currentTime)
     // 设置播放进度
     setPlayProgress(progress)
-    // 设置宽度样式
-    setPlayProgressWidth(progress)
-    console.log('setSongplay设置progress: ', progress)
   }
 
   // 音乐播放的进度处理
@@ -109,56 +88,8 @@ const PlayerProgress: FC<IProps> = (props) => {
       setPlayProgress(progress)
       // 5. 设置currentTime
       setCurrentTime(parseInt(currentTime.toString()))
-      // 4. 操作DOM
-      setPlayProgressWidth(progress)
-      // console.log('handleTimeUpdate设置progress: ', progress)
     }
   }
-
-  // 设置playProgress的dom宽度
-  function setPlayProgressWidth(progress: number) {
-    playProgressRef.current!.style.width = `${progress}%`
-  }
-
-  // function handlePlayProgressMouseDown(e: MouseEvent<HTMLDivElement>) {
-  //   // 点击的x点位置
-  //   const startX = e.nativeEvent.offsetX
-  //   setStartMove(true)
-  // }
-
-  // function handlePlayProgressMouseMove(e: MouseEvent<HTMLDivElement>) {
-  //   // console.log('move', e)
-  //   console.log('startMove: ', startMove)
-  //   let time: any = null
-  //   if (time) return
-  //   time = setTimeout(() => {
-  //     if (startMove) {
-  //       const moveX = e.nativeEvent.offsetX
-  //       console.log('moveX: ', moveX)
-  //       const width = playProgressWrapperRef.current!.getBoundingClientRect().width
-  //       let progress = Number(((moveX / width) * 100).toFixed(2))
-  //       if (progress > 100) {
-  //         progress = 100
-  //       }
-  //       setPlayProgressWidth(progress)
-  //       console.log('MouseMove设置progress: ', progress)
-  //       clearTimeout(time)
-  //     }
-  //   }, 40)
-  // }
-
-  // function debounceMove() {
-  //   debounce(handlePlayProgressMouseMove, 50)
-  // }
-
-  // function handlePlayProgressMouseUp(e: MouseEvent<HTMLDivElement>) {
-  //   // console.log('end', e)
-  //   const endX = e.nativeEvent.offsetX
-  //   console.log(endX)
-  //   getDotPosition(endX)
-  //   setStartMove(false)
-  //   console.log('startMove: ', startMove)
-  // }
 
   return (
     <PlayProgressWrapper $isplaying={isPlaying}>
@@ -179,22 +110,7 @@ const PlayerProgress: FC<IProps> = (props) => {
           <div className="player_music_time">
             {formatterDuration(currentTime)} / {formatterDuration(currentSong.dt)}
           </div>
-          {/* <div
-            className="player_progress"
-            ref={playProgressWrapperRef}
-            onClick={handlePlayProgress}
-            onMouseDown={handlePlayProgressMouseDown}
-            onMouseMove={handlePlayProgressMouseMove}
-            onMouseUp={handlePlayProgressMouseUp}
-          >
-            <div className="player_progress__inner">
-              <div className="player_progerss_load"></div>
-              <div className="player_progerss_play" ref={playProgressRef}>
-                <i className="player_progress_dot"></i>
-              </div>
-            </div>
-          </div> */}
-          <Slider />
+          <Slider value={playProgress} tooltip={{ formatter: null }} step={0.5} />
         </div>
         <a href="" className="btn_playmode">
           <i className="iconfont"></i>
