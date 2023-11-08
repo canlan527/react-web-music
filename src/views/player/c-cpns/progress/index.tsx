@@ -52,43 +52,32 @@ const PlayerProgress: FC<IProps> = (props) => {
       })
   }, [currentSong.id]) // 依赖
 
-  // 组件内部事件处理
-  // 歌曲播放处理
   function handlePlaying() {
-    // 1. 控制播放器的播放和暂停
+    // 控制播放/暂停
     isPlaying ? audioRef.current?.pause() : audioRef.current?.play().catch(() => setIsPlaying(false))
-
-    // 2. 改变isplaying的状态
+    // 改变isPlaying的状态
     setIsPlaying(!isPlaying)
   }
 
-  // 封装歌曲播放方法
-  function setSongPlay(progress: number) {
-    // 获取duration
-    duration === 0 ? setDuration(currentSong.dt) : duration
-    // 获取点击位置的时间
-    const currentTime = (progress / 100) * duration
-    // 设置歌曲播放进度
-    audioRef.current!.currentTime = Number((currentTime / 1000).toFixed(2))
-    // 设置进度时间
-    setCurrentTime(currentTime)
-    // 设置播放进度
-    setPlayProgress(progress)
-  }
+  // // 拖拽silder进度条
+  // function handleProgressChange(progress: number) {
+  //   console.log('handleProgressChange: ', progress)
+  // }
+
+  // 点击进度条后的处理
+  // function handleAfterChange(progress: number) {
+  //   console.log('handleAfterChange: ', progress)
+  // }
 
   // 音乐播放的进度处理
   function handleTimeUpdate() {
-    // 1. 获取当前的播放时间
-    const currentTime = audioRef.current!.currentTime * 1000
-    // 如果不是移动dot，正常计算progerss
-    if (!startMove) {
-      // 2. 计算当前歌曲的播放进度 ：将播放进度 * 1000 转成毫秒，除以duration， 乘以100，变为类似50%的结果
-      const progress = Number(((currentTime / duration) * 100).toFixed(2))
-      // 3. 设置进度
-      setPlayProgress(progress)
-      // 5. 设置currentTime
-      setCurrentTime(parseInt(currentTime.toString()))
-    }
+    // 获取歌曲播放时间
+    const currentTime = audioRef.current!.currentTime
+    // 得到歌曲的播放进度的百分比
+    const progress = ((currentTime * 1000) / duration) * 100
+    // 设置进度
+    setCurrentTime(currentTime)
+    setPlayProgress(progress)
   }
 
   return (
@@ -110,7 +99,13 @@ const PlayerProgress: FC<IProps> = (props) => {
           <div className="player_music_time">
             {formatterDuration(currentTime)} / {formatterDuration(currentSong.dt)}
           </div>
-          <Slider value={playProgress} tooltip={{ formatter: null }} step={0.5} />
+          <Slider
+            value={playProgress}
+            tooltip={{ formatter: null }}
+            step={0.5}
+            // onAfterChange={handleAfterChange}
+            // onChange={handleProgressChange}
+          />
         </div>
         <a href="" className="btn_playmode">
           <i className="iconfont"></i>
