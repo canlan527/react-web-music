@@ -71,13 +71,14 @@ const PlayerProgress: FC<IProps> = (props) => {
 
   // 音乐播放的进度处理
   function handleTimeUpdate() {
-    // 获取歌曲播放时间
-    const currentTime = audioRef.current!.currentTime
+    // 获取歌曲播放时间 转成毫秒
+    const currentTime = audioRef.current!.currentTime * 1000
     // 得到歌曲的播放进度的百分比
-    const progress = ((currentTime * 1000) / duration) * 100
+    const progress = (currentTime / duration) * 100
     // 设置进度
-    setCurrentTime(currentTime)
     setPlayProgress(progress)
+    setCurrentTime(currentTime)
+    console.log(formatterDuration(currentTime))
   }
 
   return (
