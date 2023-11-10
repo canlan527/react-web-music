@@ -61,8 +61,13 @@ const PlayerProgress: FC<IProps> = (props) => {
 
   // 拖拽silder进度条
   function handleProgressChange(progress: number) {
+    // 设置startMove
     setStartMove(true)
+    // 设置进度条
     setPlayProgress(progress)
+    // 根据progress百分比设置播放时间
+    const currentTime = (progress / 100) * duration
+    setCurrentTime(currentTime)
   }
 
   // 点击进度条后的处理
