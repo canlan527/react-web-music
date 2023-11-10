@@ -55,9 +55,11 @@ const PlayerProgress: FC<IProps> = (props) => {
     isPlaying ? audioRef.current?.pause() : audioRef.current?.play().catch(() => setIsPlaying(false))
     // 改变isPlaying的状态
     setIsPlaying(!isPlaying)
+    // 设置duration
+    setDuration(currentSong.dt)
   }
 
-  // // 拖拽silder进度条
+  // 拖拽silder进度条
   function handleProgressChange(progress: number) {
     setStartMove(true)
     setPlayProgress(progress)
@@ -80,11 +82,14 @@ const PlayerProgress: FC<IProps> = (props) => {
   function handleTimeUpdate() {
     // 获取歌曲播放时间 转成毫秒
     const currentTime = audioRef.current!.currentTime * 1000
+    setDuration(currentSong.dt)
     if (!startMove) {
       // 得到歌曲的播放进度的百分比
       const progress = (currentTime / duration) * 100
       // 设置进度
-      setPlayProgress(progress)
+      if (progress) {
+        setPlayProgress(progress)
+      }
       setCurrentTime(currentTime)
     }
   }
