@@ -14,11 +14,11 @@ const PlayerSonginfo: FC<IProps> = (props) => {
       <div className="player_right">
         <div className="song_info">
           <a className="song_info_cover">
-            <img className="song_info_pic" src={currentSong.al.picUrl} alt="" />
+            <img className="song_info_pic" src={currentSong?.al?.picUrl} alt="" />
           </a>
           <div className="song_info_item song_info_name ellipsis">
             歌曲名：
-            <a href="">{currentSong.name}</a>
+            <a href="">{currentSong?.name}</a>
           </div>
           <div className="song_info_item song_info_singer ellipsis">
             歌手：
@@ -26,17 +26,17 @@ const PlayerSonginfo: FC<IProps> = (props) => {
           </div>
           <div className="song_info_item song_info_album ellipsis">
             专辑：
-            <a href="">{currentSong.al.name}</a>
+            <a href="">{currentSong?.al?.name}</a>
           </div>
         </div>
         <div className="song_lyric">
           <div className="song_lyric_wrapper">
             <div className="song_lyric_inner">
               <p>
-                <span>Produced by：Dave Jenkins Jr</span>
+                <span>Produced by: Dave Jenkins Jr</span>
               </p>
               <p className="on">
-                <span>Mixed by：Dave Jenkins Jr</span>
+                <span>Mixed by: Dave Jenkins Jr</span>
               </p>
               <p>
                 <span>I don't need you riding white horses to my house</span>

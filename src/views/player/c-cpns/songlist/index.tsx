@@ -5,19 +5,17 @@ import { useAppDispatch } from '@/store'
 import { fetchCurrentSongAction } from '@/store/modules/player'
 
 interface IProps {
-  children?: ReactNode,
-  currentSong?: any,
+  children?: ReactNode
+  currentSong?: any
 }
 
 const PlayerSonglist: FC<IProps> = (props) => {
-
   const dispatch = useAppDispatch()
 
   // 获取某一首歌曲
   useEffect(() => {
     dispatch(fetchCurrentSongAction(2089113495))
-  },[])
-
+  }, [])
 
   return (
     <PlaySonglistWrapper>

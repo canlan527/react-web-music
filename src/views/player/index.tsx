@@ -17,7 +17,7 @@ const Player: FC<IProps> = () => {
     }),
     appShallowEqual
   )
-
+  console.log(currentSong)
   return (
     <PlayerWrapper>
       <div className="player-header-logo">X Muscial</div>
