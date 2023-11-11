@@ -113,7 +113,7 @@ const PlayerProgress: FC<IProps> = (props) => {
         </a>
         <div className="player_progress_control">
           <div className="player_music_info ellipsis">
-            <a href="">{currentSong.name}</a> - <a href="">{currentSong.ar[0].name}</a>
+            <a href="">{currentSong.name}</a> - <a href="">{currentSong?.ar?.[0]?.name}</a>
           </div>
           <div className="player_music_time">
             {formatterDuration(currentTime)} / {formatterDuration(currentSong.dt)}

@@ -1,12 +1,24 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 import type { FC, ReactNode } from 'react'
 import { PlaySonglistWrapper } from './style'
+import { useAppDispatch } from '@/store'
+import { fetchCurrentSongAction } from '@/store/modules/player'
 
 interface IProps {
-  children?: ReactNode
+  children?: ReactNode,
+  currentSong?: any,
 }
 
-const PlayerSonglist: FC<IProps> = () => {
+const PlayerSonglist: FC<IProps> = (props) => {
+
+  const dispatch = useAppDispatch()
+
+  // 获取某一首歌曲
+  useEffect(() => {
+    dispatch(fetchCurrentSongAction(2089113495))
+  },[])
+
+
   return (
     <PlaySonglistWrapper>
       <div className="player_left">

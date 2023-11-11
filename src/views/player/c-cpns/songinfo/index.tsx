@@ -22,7 +22,7 @@ const PlayerSonginfo: FC<IProps> = (props) => {
           </div>
           <div className="song_info_item song_info_singer ellipsis">
             歌手：
-            <a href="">{currentSong.ar[0].name}</a>
+            <a href="">{currentSong?.ar?.[0]?.name}</a>
           </div>
           <div className="song_info_item song_info_album ellipsis">
             专辑：

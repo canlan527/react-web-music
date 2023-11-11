@@ -28,7 +28,7 @@ const Player: FC<IProps> = () => {
         <div className="player_item player_header"></div>
         <div className="player_item player_content_wrapper">
           <div className="player_content">
-            <PlayerSonglist />
+            <PlayerSonglist currentSong={currentSong} />
             <PlayerSonginfo currentSong={currentSong} />
           </div>
         </div>
