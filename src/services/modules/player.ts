@@ -9,3 +9,13 @@ export function getSongDetail(ids: number) {
     },
   })
 }
+
+// 获取歌词数据
+export function getSongLyric(id: number) {
+  return request.get({
+    url: '/lyric',
+    params: {
+      id,
+    },
+  })
+}
