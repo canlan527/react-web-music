@@ -6,10 +6,12 @@ import { formatterDuration } from '@/utils'
 import { appShallowEqual, useAppSelector } from '@/store'
 
 import { Slider } from 'antd'
+import { ILyrics } from '@/utils/parse-lyric'
 
 interface IProps {
   children?: ReactNode
   currentSong?: any
+  lyrics?: ILyrics[]
 }
 
 const PlayerProgress: FC<IProps> = (props) => {
@@ -21,7 +23,7 @@ const PlayerProgress: FC<IProps> = (props) => {
   const [currentTime, setCurrentTime] = useState(0)
   const [startMove, setStartMove] = useState(false)
   // 从props获取数据
-  const { currentSong } = props
+  const { currentSong, lyrics } = props
 
   // 从store获取数据
   // const { currentSong } = useAppSelector(
@@ -97,6 +99,18 @@ const PlayerProgress: FC<IProps> = (props) => {
       }
       setCurrentTime(currentTime)
     }
+
+    // 根据当前的时间匹配对应的歌词
+    // currentTime/lyrics
+    let index = -1 // 获取正在播放的lyrics的索引值
+    for (let i = 0; i < lyrics!.length; i++) {
+      const lyric = lyrics![i]
+      if (lyric.time > currentTime) {
+        index = i - 1
+        break
+      }
+    }
+    console.log(lyrics![index]!.text)
   }
 
   return (

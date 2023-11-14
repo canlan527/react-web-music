@@ -1,4 +1,4 @@
-interface ILyrics {
+export interface ILyrics {
   time: number
   text: string
 }

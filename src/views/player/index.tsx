@@ -11,9 +11,10 @@ interface IProps {
 }
 
 const Player: FC<IProps> = () => {
-  const { currentSong } = useAppSelector(
+  const { currentSong, lyrics } = useAppSelector(
     (state) => ({
       currentSong: state.player.currentSong,
+      lyrics: state.player.lyrics,
     }),
     appShallowEqual
   )
@@ -32,7 +33,7 @@ const Player: FC<IProps> = () => {
             <PlayerSonginfo currentSong={currentSong} />
           </div>
         </div>
-        <PlayerProgress currentSong={currentSong} />
+        <PlayerProgress currentSong={currentSong} lyrics={lyrics} />
       </PlayerContainer>
     </PlayerWrapper>
   )
