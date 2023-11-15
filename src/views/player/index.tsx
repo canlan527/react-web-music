@@ -4,21 +4,22 @@ import { PlayerWrapper, PlayerContainer } from './style'
 import PlayerSonginfo from './c-cpns/songinfo'
 import PlayerSonglist from './c-cpns/songlist'
 import PlayerProgress from './c-cpns/progress'
-import { appShallowEqual, useAppSelector } from '@/store'
+import { appShallowEqual, useAppDispatch, useAppSelector } from '@/store'
 
 interface IProps {
   children?: ReactNode
 }
 
 const Player: FC<IProps> = () => {
-  const { currentSong, lyrics } = useAppSelector(
+  const { currentSong, lyrics, lyricIndex } = useAppSelector(
     (state) => ({
       currentSong: state.player.currentSong,
       lyrics: state.player.lyrics,
+      lyricIndex: state.player.lyricIndex,
     }),
     appShallowEqual
   )
-  console.log(currentSong)
+
   return (
     <PlayerWrapper>
       <div className="player-header-logo">X Muscial</div>
@@ -33,7 +34,7 @@ const Player: FC<IProps> = () => {
             <PlayerSonginfo currentSong={currentSong} />
           </div>
         </div>
-        <PlayerProgress currentSong={currentSong} lyrics={lyrics} />
+        <PlayerProgress currentSong={currentSong} lyrics={lyrics} lyricIndex={lyricIndex} />
       </PlayerContainer>
     </PlayerWrapper>
   )

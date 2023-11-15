@@ -3,15 +3,17 @@ import type { FC, ReactNode, MouseEvent } from 'react'
 import { PlayProgressWrapper } from './style'
 import { getSongUrl } from '@/utils/handle-player'
 import { formatterDuration } from '@/utils'
-import { appShallowEqual, useAppSelector } from '@/store'
+import { appShallowEqual, useAppDispatch, useAppSelector } from '@/store'
 
 import { Slider } from 'antd'
 import { ILyrics } from '@/utils/parse-lyric'
+import { changeLyricIndexAction } from '@/store/modules/player'
 
 interface IProps {
   children?: ReactNode
   currentSong?: any
   lyrics?: ILyrics[]
+  lyricIndex?: number
 }
 
 const PlayerProgress: FC<IProps> = (props) => {
@@ -23,7 +25,7 @@ const PlayerProgress: FC<IProps> = (props) => {
   const [currentTime, setCurrentTime] = useState(0)
   const [startMove, setStartMove] = useState(false)
   // 从props获取数据
-  const { currentSong, lyrics } = props
+  const { currentSong, lyrics, lyricIndex } = props
 
   // 从store获取数据
   // const { currentSong } = useAppSelector(
@@ -32,6 +34,7 @@ const PlayerProgress: FC<IProps> = (props) => {
   //   }),
   //   appShallowEqual
   // )
+  const dispatch = useAppDispatch()
 
   // 组件内的副作用操作
   // console.log(currentSong.id)
@@ -102,15 +105,21 @@ const PlayerProgress: FC<IProps> = (props) => {
 
     // 根据当前的时间匹配对应的歌词
     // currentTime/lyrics
-    let index = -1 // 获取正在播放的lyrics的索引值
+    let index = lyrics!.length! - 1 // 获取正在播放的lyrics的索引值
     for (let i = 0; i < lyrics!.length; i++) {
       const lyric = lyrics![i]
-      if (lyric.time > currentTime) {
+      if (lyric!.time > currentTime) {
         index = i - 1
         break
       }
     }
-    console.log(lyrics![index]!.text)
+
+    // 判断index,如果index不做变化就返回
+    if (lyricIndex === index || index === -1) return
+
+    // 匹配对应歌词的index,记录index
+    dispatch(changeLyricIndexAction(index))
+    console.log(lyrics![index]?.text)
   }
 
   return (
