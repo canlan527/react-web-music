@@ -1,7 +1,9 @@
 import styled from 'styled-components'
+import { deflate } from 'zlib'
 
 interface IPlayProgressWrapper {
   $isplaying: boolean
+  $playmode: number
 }
 
 export const PlayProgressWrapper = styled.div<IPlayProgressWrapper>`
@@ -139,9 +141,24 @@ export const PlayProgressWrapper = styled.div<IPlayProgressWrapper>`
     .btn_playmode {
       top: 4px;
       right: 378px;
-      width: 25px;
-      height: 19px;
-      background-position: 0 -74px;
+      width: 26px;
+      height: 22px;
+      /* background-position: 0 -260px; // 顺序 0 */
+      /* background-position: 0 -205px; // 列表循环 1*/
+      /* background-position: 0 -232px; // 单曲循环 2 */
+      /* background-position: 0 -74px; */ // 随机  3
+      background-position: ${(props) => {
+        switch (props.$playmode) {
+          case 1:
+            return '0 -205px'
+          case 2:
+            return '0 -232px'
+          case 3:
+            return '0 -74px'
+          default:
+            return '0 -260px'
+        }
+      }};
     }
     .btn_like {
       top: 4px;

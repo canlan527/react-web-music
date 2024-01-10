@@ -7,7 +7,7 @@ import { appShallowEqual, useAppDispatch, useAppSelector } from '@/store'
 
 import { Slider } from 'antd'
 import { ILyrics } from '@/utils/parse-lyric'
-import { changeLyricIndexAction } from '@/store/modules/player'
+import { changeLyricIndexAction, changePlayModeAction } from '@/store/modules/player'
 
 interface IProps {
   children?: ReactNode
@@ -28,12 +28,12 @@ const PlayerProgress: FC<IProps> = (props) => {
   const { currentSong, lyrics, lyricIndex } = props
 
   // 从store获取数据
-  // const { currentSong } = useAppSelector(
-  //   (state) => ({
-  //     currentSong: state.player.currentSong,
-  //   }),
-  //   appShallowEqual
-  // )
+  const { playMode } = useAppSelector(
+    (state) => ({
+      playMode: state.player.playMode,
+    }),
+    appShallowEqual
+  )
   const dispatch = useAppDispatch()
 
   // 组件内的副作用操作
@@ -41,27 +41,36 @@ const PlayerProgress: FC<IProps> = (props) => {
   useEffect(() => {
     // 1. 音乐播放，以 src 赋予 Audio
     audioRef.current!.src = getSongUrl(currentSong.id)
-    audioRef.current
-      ?.play()
-      .then((res) => {
-        setIsPlaying(true)
-        setDuration(currentSong.dt)
-        setPlayProgress(0)
-        console.log('歌曲播放成功')
-      })
-      .catch((e) => {
-        setIsPlaying(false)
-        console.log('歌曲播放失败', e)
-      })
+    // audioRef.current
+    //   ?.play()
+    //   .then((res) => {
+    //     setIsPlaying(true)
+    //     setDuration(currentSong.dt)
+    //     setPlayProgress(0)
+    //     console.log('歌曲播放成功')
+    //   })
+    //   .catch((e) => {
+    //     setIsPlaying(false)
+    //     console.log('歌曲播放失败', e)
+    //   })
   }, [currentSong.id]) // 依赖
 
+  // 点击播放/暂停事件
   function handlePlaying() {
+    console.log('handlePlaying')
     // 控制播放/暂停
     isPlaying ? audioRef.current?.pause() : audioRef.current?.play().catch(() => setIsPlaying(false))
     // 改变isPlaying的状态
     setIsPlaying(!isPlaying)
     // 设置duration
     setDuration(currentSong.dt)
+  }
+
+  // 点击切换播放模式
+  function handleChangePlayMode() {
+    let newPlayMode = playMode + 1
+    if (newPlayMode > 3) newPlayMode = 0
+    dispatch(changePlayModeAction(newPlayMode))
   }
 
   // 拖拽silder进度条
@@ -123,15 +132,15 @@ const PlayerProgress: FC<IProps> = (props) => {
   }
 
   return (
-    <PlayProgressWrapper $isplaying={isPlaying}>
+    <PlayProgressWrapper $isplaying={isPlaying} $playmode={playMode}>
       <div className="player_item player_footer">
-        <a href="" className="btn_prev">
+        <a className="btn_prev">
           <i className="iconfont"></i>
         </a>
         <a className="btn_play" onClick={handlePlaying}>
           <i className="iconfont"></i>
         </a>
-        <a href="" className="btn_next">
+        <a className="btn_next">
           <i className="iconfont"></i>
         </a>
         <div className="player_progress_control">
@@ -143,17 +152,17 @@ const PlayerProgress: FC<IProps> = (props) => {
           </div>
           <Slider value={playProgress} tooltip={{ formatter: null }} step={0.5} onAfterChange={handleAfterChange} onChange={handleProgressChange} />
         </div>
-        <a href="" className="btn_playmode">
+        <a className="btn_playmode" onClick={handleChangePlayMode}>
           <i className="iconfont"></i>
         </a>
-        <a href="" className="btn_like">
+        <a className="btn_like">
           <i className="iconfont"></i>
         </a>
-        <a href="" className="btn_comment">
+        <a className="btn_comment">
           <i className="iconfont"></i>
         </a>
         <div className="player_voice_control">
-          <a href="" className="btn_voice"></a>
+          <a className="btn_voice"></a>
           <div className="player_vioce_inner">
             <div className="player_voice_progress">
               <i className="iconfont player_voice_dot"></i>

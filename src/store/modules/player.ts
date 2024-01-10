@@ -26,7 +26,6 @@ export const fetchCurrentSongAction = createAsyncThunk<void, number, { state: Ro
       dispatch(changePlaysongListAction(newPlaysongList))
       // 记录索引
       dispatch(changePlaysongIndexAction(newPlaysongList.length - 1))
-
     })
   } else {
     // 找到了相同的item
@@ -52,6 +51,7 @@ interface IPlayerState {
   lyricIndex: number
   playsongList: any[]
   playsongIndex: number
+  playMode: number
 }
 
 const initialState: IPlayerState = {
@@ -60,6 +60,7 @@ const initialState: IPlayerState = {
   lyricIndex: -1,
   playsongList: [],
   playsongIndex: -1,
+  playMode: 1, // 0: 顺序播放  1: 列表循环  2: 单曲循环 3: 随机播放
 }
 
 const playerSlice = createSlice({
@@ -81,9 +82,19 @@ const playerSlice = createSlice({
     changePlaysongListAction(state, { payload }) {
       state.playsongList = payload
     },
+    changePlayModeAction(state, { payload }) {
+      state.playMode = payload
+    },
   },
 })
 // 导出reducers
-export const { changeCurrentSongAction, changeLyricsAction, changeLyricIndexAction, changePlaysongIndexAction, changePlaysongListAction } = playerSlice.actions
+export const {
+  changeCurrentSongAction,
+  changeLyricsAction,
+  changeLyricIndexAction,
+  changePlaysongIndexAction,
+  changePlaysongListAction,
+  changePlayModeAction,
+} = playerSlice.actions
 
 export default playerSlice.reducer
