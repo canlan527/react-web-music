@@ -7,7 +7,7 @@ import { appShallowEqual, useAppDispatch, useAppSelector } from '@/store'
 
 import { Slider } from 'antd'
 import { ILyrics } from '@/utils/parse-lyric'
-import { changeLyricIndexAction, changePlayModeAction } from '@/store/modules/player'
+import { changeLyricIndexAction, changePlayModeAction, changePlaylistSongAction } from '@/store/modules/player'
 
 interface IProps {
   children?: ReactNode
@@ -41,18 +41,18 @@ const PlayerProgress: FC<IProps> = (props) => {
   useEffect(() => {
     // 1. 音乐播放，以 src 赋予 Audio
     audioRef.current!.src = getSongUrl(currentSong.id)
-    // audioRef.current
-    //   ?.play()
-    //   .then((res) => {
-    //     setIsPlaying(true)
-    //     setDuration(currentSong.dt)
-    //     setPlayProgress(0)
-    //     console.log('歌曲播放成功')
-    //   })
-    //   .catch((e) => {
-    //     setIsPlaying(false)
-    //     console.log('歌曲播放失败', e)
-    //   })
+    audioRef.current
+      ?.play()
+      .then((res) => {
+        setIsPlaying(true)
+        setDuration(currentSong.dt)
+        setPlayProgress(0)
+        console.log('歌曲播放成功')
+      })
+      .catch((e) => {
+        setIsPlaying(false)
+        console.log('歌曲播放失败', e)
+      })
   }, [currentSong.id]) // 依赖
 
   // 点击播放/暂停事件
@@ -64,6 +64,11 @@ const PlayerProgress: FC<IProps> = (props) => {
     setIsPlaying(!isPlaying)
     // 设置duration
     setDuration(currentSong.dt)
+  }
+
+  // 点击切换歌曲
+  function handleChangeSong(isNext = true) {
+    dispatch(changePlaylistSongAction(isNext))
   }
 
   // 点击切换播放模式
@@ -134,13 +139,13 @@ const PlayerProgress: FC<IProps> = (props) => {
   return (
     <PlayProgressWrapper $isplaying={isPlaying} $playmode={playMode}>
       <div className="player_item player_footer">
-        <a className="btn_prev">
+        <a className="btn_prev" onClick={() => handleChangeSong(false)}>
           <i className="iconfont"></i>
         </a>
         <a className="btn_play" onClick={handlePlaying}>
           <i className="iconfont"></i>
         </a>
-        <a className="btn_next">
+        <a className="btn_next" onClick={() => handleChangeSong()}>
           <i className="iconfont"></i>
         </a>
         <div className="player_progress_control">
