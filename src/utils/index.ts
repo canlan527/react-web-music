@@ -39,3 +39,22 @@ export function ctrBannerList(showlen: number, data: any[]) {
   }
   return banners
 }
+
+/**
+ * 生成一个随机数，并确保它与上一次的不同
+ * @param playlist 列表
+ * @param lastRandomNumber 上一次的随机数
+ * @returns
+ */
+export function getRandomNumber(playlist: any[], lastRandomNumber: number) {
+  let random = Math.floor(Math.random() * playlist.length)
+
+  while (random === lastRandomNumber) {
+    console.log(random, lastRandomNumber)
+    random = Math.floor(Math.random() * playlist.length)
+    if (random !== lastRandomNumber) {
+      lastRandomNumber = random
+    }
+  }
+  return random
+}
