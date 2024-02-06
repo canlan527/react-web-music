@@ -2,6 +2,8 @@ import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
 import { RankListWrapper, RankSong } from './style'
 import rankDefaultBg from '@/assets/imgs/rank_defalut_bg.jpg'
+import { useAppDispatch } from '@/store'
+import { fetchCurrentSongAction } from '@/store/modules/player'
 
 interface IProps {
   children?: ReactNode
@@ -17,6 +19,13 @@ type ItemType = {
 const RankList: FC<IProps> = (props) => {
   const { item } = props
   const { tracks, coverImgUrl } = item
+
+  const dispatch = useAppDispatch()
+  // 点击播放歌曲
+  function handlePlaySong(id: number) {
+    dispatch(fetchCurrentSongAction(id))
+  }
+
   return (
     <RankListWrapper bgimg={coverImgUrl || rankDefaultBg}>
       <div className="rank-list-container">
@@ -26,7 +35,7 @@ const RankList: FC<IProps> = (props) => {
         </div>
         <div className="rank-list-content">
           {tracks.slice(0, 7).map((song: any, index: number) => (
-            <RankSong key={song.id}>
+            <RankSong key={song.id} onClick={() => handlePlaySong(song.id)}>
               <div className="rank-number">{index + 1}</div>
               <div className="rank-song-name ellipsis">{song.name}</div>
             </RankSong>
