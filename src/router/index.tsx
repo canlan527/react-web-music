@@ -71,7 +71,7 @@ const routes: RouteObject[] = [
     ],
   },
   {
-    path: '/player',
+    path: '/player/:playerId',
     element: <Player />,
   },
   {
