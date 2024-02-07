@@ -24,7 +24,7 @@ export const fetchCurrentSongAction = createAsyncThunk<void, number, IThunkState
       const song = data.songs[0]
       // 拷贝一份playlist
       const newPlaysongList = [...playlist]
-      newPlaysongList.push(song) // 将新获取的song推入新数组中
+      newPlaysongList.unshift(song) // 将新获取的song推入新数组中
       // 放入state.currentSong中
       dispatch(changeCurrentSongAction(song))
       // 派发action，更新playlist数据
@@ -57,7 +57,7 @@ export const changePlaylistSongAction = createAsyncThunk<void, boolean, IThunkSt
   const playMode = player.playMode
   const songIndex = player.playsongIndex
   const songlist = player.playsongList
-
+  console.log(songlist)
   // 获取新歌曲的索引, 根据不同的模式计算不同的下一首歌的索引
   let newIndex = songIndex
 
