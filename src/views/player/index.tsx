@@ -11,6 +11,7 @@ interface IProps {
 }
 
 const Player: FC<IProps> = () => {
+  // 从 rtk 里拿取数据
   const { currentSong, lyrics, lyricIndex } = useAppSelector(
     (state) => ({
       currentSong: state.player.currentSong,

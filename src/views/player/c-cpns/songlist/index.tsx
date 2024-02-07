@@ -23,9 +23,9 @@ const PlayerSonglist: FC<IProps> = (props) => {
 
   // 获取某一首歌曲
   useEffect(() => {
-    startTransition(() => {
-      dispatch(fetchCurrentSongAction(2089113495))
-    })
+    // startTransition(() => {
+    //   dispatch(fetchCurrentSongAction(2089113495))
+    // })
   }, [])
 
   return (
