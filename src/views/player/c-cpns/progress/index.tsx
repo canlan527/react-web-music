@@ -28,10 +28,11 @@ const PlayerProgress: FC<IProps> = (props) => {
   const { currentSong, lyrics, lyricIndex } = props
 
   // 从store获取数据
-  const { playMode, playlist } = useAppSelector(
+  const { playMode, playlist, playIndex } = useAppSelector(
     (state) => ({
       playMode: state.player.playMode,
       playlist: state.player.playsongList,
+      playIndex: state.player.playsongIndex,
     }),
     appShallowEqual
   )
@@ -55,7 +56,7 @@ const PlayerProgress: FC<IProps> = (props) => {
         console.log('歌曲播放失败', e)
       })
     // 输出playlist
-    console.log(playlist)
+    // console.log(playlist)
   }, [currentSong.id]) // 依赖
 
   // 点击播放/暂停事件
@@ -77,7 +78,7 @@ const PlayerProgress: FC<IProps> = (props) => {
   // 点击切换播放模式
   function handleChangePlayMode() {
     let newPlayMode = playMode + 1
-    if (newPlayMode > 3) newPlayMode = 0
+    if (newPlayMode > 4) newPlayMode = 1
     dispatch(changePlayModeAction(newPlayMode))
   }
 
@@ -136,7 +137,25 @@ const PlayerProgress: FC<IProps> = (props) => {
 
     // 匹配对应歌词的index,记录index
     dispatch(changeLyricIndexAction(index))
-    console.log(lyrics![index]?.text)
+    // console.log(lyrics![index]?.text)
+  }
+
+  // 播放结束的处理
+  function handleEnded() {
+    if (playMode === 2) {
+      // 单曲循环
+      audioRef.current!.currentTime = 0
+      audioRef.current!.play()
+    } else if (playMode === 4) {
+      // 顺序播放到最后一首就不再播放
+      if (playIndex === playlist.length - 1) {
+        return
+      } else {
+        handleChangeSong(true)
+      }
+    } else {
+      handleChangeSong(true)
+    }
   }
 
   return (
@@ -178,7 +197,7 @@ const PlayerProgress: FC<IProps> = (props) => {
           </div>
         </div>
       </div>
-      <audio ref={audioRef} onTimeUpdate={handleTimeUpdate} />
+      <audio ref={audioRef} onTimeUpdate={handleTimeUpdate} onEnded={handleEnded} />
     </PlayProgressWrapper>
   )
 }

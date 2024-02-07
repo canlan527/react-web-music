@@ -24,8 +24,8 @@ export const fetchRankListAction = createAsyncThunk('rank', async () => {
   }
   return Promise.all(promiseFetchList).then((res) => {
     // map playlist
-    console.log(res)
-    const playlist = res.map((item) => item.data.playlist)
+    // console.log(res)
+    const playlist = res.filter((item) => item.data.playlist).map((item) => item.data.playlist)
     return playlist
   })
 })

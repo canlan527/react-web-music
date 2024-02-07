@@ -57,7 +57,7 @@ export const changePlaylistSongAction = createAsyncThunk<void, boolean, IThunkSt
   const playMode = player.playMode
   const songIndex = player.playsongIndex
   const songlist = player.playsongList
-  console.log(songlist)
+  // console.log(songlist)
   // 获取新歌曲的索引, 根据不同的模式计算不同的下一首歌的索引
   let newIndex = songIndex
 
@@ -79,6 +79,16 @@ export const changePlaylistSongAction = createAsyncThunk<void, boolean, IThunkSt
   // 提交dispatch，更改歌曲和索引
   dispatch(changeCurrentSongAction(song))
   dispatch(changePlaysongIndexAction(newIndex))
+
+  // 更新歌词信息
+  getSongLyric(song.id).then((res) => {
+    const { data } = res
+    // 获取歌词字符串
+    const lyricStr = data.lrc.lyric
+    // 解析歌词
+    const lyrics = parseLyric(lyricStr)
+    dispatch(changeLyricsAction(lyrics))
+  })
 })
 
 interface IPlayerState {
@@ -97,7 +107,7 @@ const initialState: IPlayerState = {
   lyricIndex: -1,
   playsongList: [
     {
-      name: '悬溺2',
+      name: '悬溺',
       id: 1397345903,
       pst: 0,
       t: 0,
@@ -300,7 +310,7 @@ const initialState: IPlayerState = {
       publishTime: 0,
     },
     {
-      name: '浮光4',
+      name: '浮光',
       id: 2112196350,
       pst: 0,
       t: 0,
@@ -392,7 +402,7 @@ const initialState: IPlayerState = {
       publishTime: 1703952000000,
     },
     {
-      name: '睫毛弯弯 (live)5',
+      name: '睫毛弯弯 (live)',
       id: 2114342609,
       pst: 0,
       t: 0,
@@ -504,7 +514,7 @@ const initialState: IPlayerState = {
     },
   ],
   playsongIndex: -1,
-  playMode: 1, // 0: 顺序播放  1: 列表循环  2: 单曲循环 3: 随机播放
+  playMode: 1, // 1: 列表循环  2: 单曲循环 3: 随机播放 4: 顺序播放
   randomNumber: -1,
 }
 

@@ -130,6 +130,9 @@ export const PlaySonglistWrapper = styled.div`
             clear: both;
             font-size: 0;
             overflow: hidden;
+            &.active {
+              background-color: rgba(255, 255, 255, 0.1);
+            }
             &:hover .songlist_item_songname .songlist_item_songname_iconmenu {
               opacity: 1;
               transform: translateY(-25px);
@@ -146,8 +149,8 @@ export const PlaySonglistWrapper = styled.div`
             &:hover .songlist_item_time .iconfont {
               display: block;
             }
-            &:nth-child(even) {
-              background-color: rgba(0, 0, 0, 0.01);
+            &:nth-child(even):not(.active) {
+              background-color: rgba(0, 0, 0, 0.06);
             }
             .songlist_item_number {
               position: absolute;
