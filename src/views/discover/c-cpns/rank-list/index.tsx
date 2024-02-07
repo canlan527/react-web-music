@@ -4,6 +4,7 @@ import { RankListWrapper, RankSong } from './style'
 import rankDefaultBg from '@/assets/imgs/rank_defalut_bg.jpg'
 import { useAppDispatch } from '@/store'
 import { fetchCurrentSongAction } from '@/store/modules/player'
+import { Link } from 'react-router-dom'
 
 interface IProps {
   children?: ReactNode
@@ -34,10 +35,12 @@ const RankList: FC<IProps> = (props) => {
           <div className="rank-title ellipsis">{item.name}</div>
         </div>
         <div className="rank-list-content">
-          {tracks.slice(0, 7).map((song: any, index: number) => (
+          {tracks.slice(0, 10).map((song: any, index: number) => (
             <RankSong key={song.id} onClick={() => handlePlaySong(song.id)}>
-              <div className="rank-number">{index + 1}</div>
-              <div className="rank-song-name ellipsis">{song.name}</div>
+              <Link to={`/player/${song.id}`}>
+                <div className="rank-number">{index + 1}</div>
+                <div className="rank-song-name ellipsis">{song.name}</div>
+              </Link>
             </RankSong>
           ))}
         </div>
