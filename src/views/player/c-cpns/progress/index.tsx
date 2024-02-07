@@ -28,9 +28,10 @@ const PlayerProgress: FC<IProps> = (props) => {
   const { currentSong, lyrics, lyricIndex } = props
 
   // 从store获取数据
-  const { playMode } = useAppSelector(
+  const { playMode, playlist } = useAppSelector(
     (state) => ({
       playMode: state.player.playMode,
+      playlist: state.player.playsongList,
     }),
     appShallowEqual
   )
@@ -53,6 +54,8 @@ const PlayerProgress: FC<IProps> = (props) => {
         setIsPlaying(false)
         console.log('歌曲播放失败', e)
       })
+    // 输出playlist
+    console.log(playlist)
   }, [currentSong.id]) // 依赖
 
   // 点击播放/暂停事件
