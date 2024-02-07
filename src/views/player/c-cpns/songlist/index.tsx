@@ -1,8 +1,9 @@
-import React, { memo, useEffect } from 'react'
+import React, { memo, startTransition, useEffect } from 'react'
 import type { FC, ReactNode } from 'react'
 import { PlaySonglistWrapper } from './style'
-import { useAppDispatch } from '@/store'
+import { appShallowEqual, useAppDispatch, useAppSelector } from '@/store'
 import { fetchCurrentSongAction } from '@/store/modules/player'
+import { formatterDuration } from '@/utils'
 
 interface IProps {
   children?: ReactNode
@@ -12,9 +13,19 @@ interface IProps {
 const PlayerSonglist: FC<IProps> = (props) => {
   const dispatch = useAppDispatch()
 
+  // 从 rtk 里拿数据
+  const { playlist } = useAppSelector(
+    (state) => ({
+      playlist: state.player.playsongList,
+    }),
+    appShallowEqual
+  )
+
   // 获取某一首歌曲
   useEffect(() => {
-    dispatch(fetchCurrentSongAction(2089113495))
+    startTransition(() => {
+      dispatch(fetchCurrentSongAction(2089113495))
+    })
   }, [])
 
   return (
@@ -49,111 +60,43 @@ const PlayerSonglist: FC<IProps> = (props) => {
               <li className="col4 songlist_header_time">时长</li>
             </ul>
             <ul className="player_songlist_content">
-              <li className="songlist_item">
-                <div className="col1 songlist_item_checkbox checked">
-                  <input type="checkbox" />
-                </div>
-                <div className="songlist_item_number">1</div>
+              {playlist.map((item, index) => (
+                <li key={item.id} className="songlist_item">
+                  <div className="col1 songlist_item_checkbox checked">
+                    <input type="checkbox" />
+                  </div>
+                  <div className="songlist_item_number">{index + 1}</div>
 
-                <div className="col2 songlist_item_songname ellipsis">
-                  <a href="/" target="_blank" className="songlist_item_songname_mv"></a>
-                  <span className="songlist_item_songname_text ellipsis">
-                    <a href="/" target="_blank" className="">
-                      乘风破浪第三季 张俪、王紫璇、于文文、张蔷、《野蔷薇》
-                    </a>
-                  </span>
-                  <div className="songlist_item_songname_iconmenu">
-                    <a href="/">
-                      <i className="iconfont icon-like"></i>
-                    </a>
-                    <a href="/">
-                      <i className="iconfont icon-play_circle"></i>
-                    </a>
-                    <a href="/">
-                      <i className="iconfont icon-add_circle"></i>
+                  <div className="col2 songlist_item_songname ellipsis">
+                    <a href="/" target="_blank" className="songlist_item_songname_mv"></a>
+                    <span className="songlist_item_songname_text ellipsis">
+                      <a href="/" target="_blank" className="">
+                        {item.name}
+                      </a>
+                    </span>
+                    <div className="songlist_item_songname_iconmenu">
+                      <a href="/">
+                        <i className="iconfont icon-like"></i>
+                      </a>
+                      <a href="/">
+                        <i className="iconfont icon-play_circle"></i>
+                      </a>
+                      <a href="/">
+                        <i className="iconfont icon-add_circle"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div className="col3 songlist_item_artist ellipsis">
+                    <a href="/" target="_blank">
+                      {item.ar[0]!.name}
                     </a>
                   </div>
-                </div>
-                <div className="col3 songlist_item_artist ellipsis">
-                  <a href="/" target="_blank">
-                    于文文/刘恋/赵梦/张蔷/唐诗逸
-                  </a>
-                </div>
-                <div className="col4 songlist_item_time">
-                  <span className="sontlist_item_time_text">3:30</span>
-                  <i className="iconfont icon-delete-circle"></i>
-                </div>
-              </li>
-              <li className="songlist_item">
-                <div className="col1 songlist_item_checkbox">
-                  <input type="checkbox" />
-                </div>
-                <div className="songlist_item_number">1</div>
-
-                <div className="col2 songlist_item_songname ellipsis">
-                  <a href="/" target="_blank" className="songlist_item_songname_mv"></a>
-                  <span className="songlist_item_songname_text ellipsis">
-                    <a href="/" target="_blank" className="">
-                      乘风破浪第三季 张俪、王紫璇、于文文、张蔷、《野蔷薇》
-                    </a>
-                  </span>
-                  <div className="songlist_item_songname_iconmenu">
-                    <a href="/">
-                      <i className="iconfont icon-like"></i>
-                    </a>
-                    <a href="/">
-                      <i className="iconfont icon-play_circle"></i>
-                    </a>
-                    <a href="/">
-                      <i className="iconfont icon-add_circle"></i>
-                    </a>
+                  <div className="col4 songlist_item_time">
+                    <span className="sontlist_item_time_text">{formatterDuration(item.dt)}</span>
+                    <i className="iconfont icon-delete-circle"></i>
                   </div>
-                </div>
-                <div className="col3 songlist_item_artist ellipsis">
-                  <a href="/" target="_blank">
-                    于文文/刘恋/赵梦/张蔷/唐诗逸
-                  </a>
-                </div>
-                <div className="col4 songlist_item_time">
-                  <span className="sontlist_item_time_text">3:30</span>
-                  <i className="iconfont icon-delete-circle"></i>
-                </div>
-              </li>
-              <li className="songlist_item">
-                <div className="col1 songlist_item_checkbox">
-                  <input type="checkbox" />
-                </div>
-                <div className="songlist_item_number">1</div>
-
-                <div className="col2 songlist_item_songname ellipsis">
-                  <a href="/" target="_blank" className="songlist_item_songname_mv"></a>
-                  <span className="songlist_item_songname_text ellipsis">
-                    <a href="/" target="_blank" className="">
-                      乘风破浪第三季 张俪、王紫璇、于文文、张蔷、《野蔷薇》
-                    </a>
-                  </span>
-                  <div className="songlist_item_songname_iconmenu">
-                    <a href="/">
-                      <i className="iconfont icon-like"></i>
-                    </a>
-                    <a href="/">
-                      <i className="iconfont icon-play_circle"></i>
-                    </a>
-                    <a href="/">
-                      <i className="iconfont icon-add_circle"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="col3 songlist_item_artist ellipsis">
-                  <a href="/" target="_blank">
-                    于文文/刘恋/赵梦/张蔷/唐诗逸
-                  </a>
-                </div>
-                <div className="col4 songlist_item_time">
-                  <span className="sontlist_item_time_text">3:30</span>
-                  <i className="iconfont icon-delete-circle"></i>
-                </div>
-              </li>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
