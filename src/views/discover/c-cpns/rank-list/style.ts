@@ -38,16 +38,19 @@ export const RankListWrapper = styled.div<ItemProps>`
   }
 `
 export const RankSong = styled.div`
-  display: flex;
-  padding: 12px 0;
-  cursor: pointer;
-  .rank-number {
-    font-size: 14px;
-    font-weight: bold;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-right: 12px;
-  }
-  .rank-song-name {
-    font-size: 14px;
+  a {
+    display: flex;
+    color: #fff;
+    padding: 12px 0;
+    cursor: pointer;
+    .rank-number {
+      font-size: 14px;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin-right: 12px;
+    }
+    .rank-song-name {
+      font-size: 14px;
+    }
   }
 `
