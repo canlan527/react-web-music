@@ -61,6 +61,7 @@ export const PlaySonginfoWrapper = styled.div`
       top: 320px;
       bottom: 50px;
       width: 100%;
+      padding-top: 20px;
       -webkit-mask-image: linear-gradient(
         180deg,
         hsla(0, 0%, 100%, 0) 0,
@@ -76,12 +77,13 @@ export const PlaySonginfoWrapper = styled.div`
         cursor: -webkit-grab;
         margin-right: -30px;
         overflow-y: auto;
-        top: 50%;
-        height: 408px;
+        top: 80%;
         margin-top: -204px;
         .song_lyric_inner {
           margin-right: 30px;
           line-height: 34px;
+          transition: all 0.2s;
+          scroll-behavior: smooth;
           .on {
             color: #31c27c;
           }

@@ -34,7 +34,6 @@ const PlayerSonglist: FC<IProps> = (props) => {
   // 点击播放歌曲
   function handlePlaySong(id: number) {
     dispatch(fetchCurrentSongAction(id))
-    console.log(playsongIndex)
   }
 
   return (

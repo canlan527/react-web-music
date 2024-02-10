@@ -137,7 +137,7 @@ const PlayerProgress: FC<IProps> = (props) => {
 
     // 匹配对应歌词的index,记录index
     dispatch(changeLyricIndexAction(index))
-    // console.log(lyrics![index]?.text)
+    console.log(lyrics![index]?.text)
   }
 
   // 播放结束的处理
