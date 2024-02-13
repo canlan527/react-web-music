@@ -44,6 +44,7 @@ const PlayerSonginfo: FC<IProps> = (props) => {
     if (distance > maxDistance) {
       distance = maxDistance
     }
+    // 设置滚动
     lyricInnerRef.current!.style.transform = `translateY(-${distance}px)`
 
     // 清除函数

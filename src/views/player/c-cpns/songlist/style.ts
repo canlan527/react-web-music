@@ -227,6 +227,11 @@ export const PlaySonglistWrapper = styled.div`
               }
             }
           }
+          .player_songlist_empty {
+            text-align: center;
+            padding: 40px;
+            margin: 40px auto;
+          }
         }
       }
     }
