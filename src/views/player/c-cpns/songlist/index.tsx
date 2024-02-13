@@ -82,6 +82,8 @@ const PlayerSonglist: FC<IProps> = (props) => {
       title: '确定删除该歌曲吗',
       icon: <ExclamationCircleFilled />,
       content: '从列表内删除该歌曲',
+      okText: '确定',
+      cancelText: '取消',
       onOk() {
         // 提交新的rtk数据,过滤删除项
         const newList = playlist.filter((item) => item.id !== id)
@@ -97,6 +99,8 @@ const PlayerSonglist: FC<IProps> = (props) => {
       title: '确定删除吗',
       icon: <ExclamationCircleFilled />,
       content: '从列表内删除选中歌曲',
+      okText: '确定',
+      cancelText: '取消',
       onOk() {
         // 提交新的rtk数据,过滤删除项
         const newList = playlist.filter((item) => !checkedlist.includes(item.id))
@@ -133,6 +137,8 @@ const PlayerSonglist: FC<IProps> = (props) => {
       title: '确定清空吗',
       icon: <ExclamationCircleFilled />,
       content: '清空列表内所有歌曲',
+      okText: '确定',
+      cancelText: '取消',
       onOk() {
         // 删除playlist列表
         dispatch(changePlaysongListAction([]))
@@ -161,7 +167,7 @@ const PlayerSonglist: FC<IProps> = (props) => {
             <span>删除</span>
           </div>
           <div className="toolbar_button" onClick={handleClear}>
-            <i className="iconfont icon-shoucang"></i>
+            {/* <i className="iconfont icon-shoucang"></i> */}
             <span>清空列表</span>
           </div>
         </div>
