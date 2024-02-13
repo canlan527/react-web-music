@@ -127,6 +127,23 @@ const PlayerSonglist: FC<IProps> = (props) => {
     }
   }
 
+  // 清空列表
+  const handleClear = () => {
+    confirm({
+      title: '确定清空吗',
+      icon: <ExclamationCircleFilled />,
+      content: '清空列表内所有歌曲',
+      onOk() {
+        // 删除playlist列表
+        dispatch(changePlaysongListAction([]))
+        // 清空checklist
+        setCheckedlist([])
+        // 重置checked
+        setChecked(false)
+      },
+    })
+  }
+
   return (
     <PlaySonglistWrapper>
       <div className="player_left">
@@ -143,7 +160,7 @@ const PlayerSonglist: FC<IProps> = (props) => {
             <i className="iconfont icon-shanchu"></i>
             <span>删除</span>
           </div>
-          <div className="toolbar_button">
+          <div className="toolbar_button" onClick={handleClear}>
             <i className="iconfont icon-shoucang"></i>
             <span>清空列表</span>
           </div>
