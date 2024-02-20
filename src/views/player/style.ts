@@ -13,11 +13,13 @@ export const PlayerWrapper = styled.div<IPlayerWrapper>`
   padding: 32px 80px;
   box-sizing: border-box;
   .player-header-logo {
+    display: block;
     position: absolute;
     top: 20px;
     left: 20px;
     z-index: 3;
     font-size: 40px;
+    color: grey;
     cursor: pointer;
   }
   .player-header-login {

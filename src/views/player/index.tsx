@@ -1,10 +1,13 @@
 import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
-import { PlayerWrapper, PlayerContainer } from './style'
+import { appShallowEqual, useAppDispatch, useAppSelector } from '@/store'
+import { Link } from 'react-router-dom'
+
 import PlayerSonginfo from './c-cpns/songinfo'
 import PlayerSonglist from './c-cpns/songlist'
 import PlayerProgress from './c-cpns/progress'
-import { appShallowEqual, useAppDispatch, useAppSelector } from '@/store'
+
+import { PlayerWrapper, PlayerContainer } from './style'
 
 interface IProps {
   children?: ReactNode
@@ -26,7 +29,9 @@ const Player: FC<IProps> = () => {
 
   return (
     <PlayerWrapper $bgimg={bgUrl}>
-      <div className="player-header-logo">X Muscial</div>
+      <Link className="player-header-logo" to="/">
+        X Muscial
+      </Link>
       <div className="player-header-login">登录</div>
       <div className="player-mask"></div>
       <div className="player-bg-img"></div>
