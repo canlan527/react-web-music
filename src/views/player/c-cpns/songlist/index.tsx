@@ -1,12 +1,14 @@
 import React, { memo, startTransition, useEffect, useState, createContext } from 'react'
 import type { FC, ReactNode } from 'react'
-import { PlaySonglistWrapper } from './style'
-import { appShallowEqual, useAppDispatch, useAppSelector } from '@/store'
-import { changePlaysongListAction, fetchCurrentSongAction } from '@/store/modules/player'
-import { formatterDuration } from '@/utils'
+// import storage from 'store'
 import classNames from 'classnames'
 import { Modal } from 'antd'
 import { ExclamationCircleFilled } from '@ant-design/icons'
+
+import { appShallowEqual, useAppDispatch, useAppSelector } from '@/store'
+import { changePlaysongListAction, fetchCurrentSongAction } from '@/store/modules/player'
+import { formatterDuration } from '@/utils'
+import { PlaySonglistWrapper } from './style'
 
 interface IProps {
   children?: ReactNode
@@ -38,7 +40,7 @@ const PlayerSonglist: FC<IProps> = (props) => {
   )
   // 获取某一首歌曲
   useEffect(() => {
-    // console.log(playsongIndex)
+    console.log(playsongIndex)
     // startTransition(() => {
     //   dispatch(fetchCurrentSongAction(2089113495))
     // })
@@ -150,6 +152,11 @@ const PlayerSonglist: FC<IProps> = (props) => {
     })
   }
 
+  // 收藏
+  const handleFavorite = (id: number) => {
+    console.log(id)
+  }
+
   return (
     <PlaySonglistWrapper>
       <div className="player_left">
@@ -158,10 +165,10 @@ const PlayerSonglist: FC<IProps> = (props) => {
             <i className="iconfont icon-shoucang"></i>
             <span>收藏</span>
           </div>
-          <div className="toolbar_button">
+          {/* <div className="toolbar_button">
             <i className="iconfont icon-tianjia"></i>
             <span>添加到</span>
-          </div>
+          </div> */}
           <div className="toolbar_button" onClick={handleDelMulti}>
             <i className="iconfont icon-shanchu"></i>
             <span>删除</span>
@@ -200,13 +207,13 @@ const PlayerSonglist: FC<IProps> = (props) => {
                           <a className="">{item.name}</a>
                         </span>
                         <div className="songlist_item_songname_iconmenu">
-                          <a href="/">
+                          <a onClick={() => handleFavorite(item.id)}>
                             <i className="iconfont icon-like"></i>
                           </a>
-                          <a href="/">
+                          <a onClick={() => handlePlaySong(item.id)}>
                             <i className="iconfont icon-play_circle"></i>
                           </a>
-                          <a href="/">
+                          <a>
                             <i className="iconfont icon-add_circle"></i>
                           </a>
                         </div>

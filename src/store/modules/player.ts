@@ -30,7 +30,7 @@ export const fetchCurrentSongAction = createAsyncThunk<void, number, IThunkState
       // 派发action，更新playlist数据
       dispatch(changePlaysongListAction(newPlaysongList))
       // 记录索引
-      dispatch(changePlaysongIndexAction(newPlaysongList.length - 1))
+      dispatch(changePlaysongIndexAction(0))
     })
   } else {
     // 找到了相同的item

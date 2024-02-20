@@ -4,7 +4,6 @@ import { PlaySonginfoWrapper } from './style'
 import { ILyrics } from '@/utils/parse-lyric'
 import { useAppSelector } from '@/store'
 import classNames from 'classnames'
-import { Link, Element, Events, animateScroll, scrollSpy, scroller } from 'react-scroll'
 
 interface IProps {
   children?: ReactNode
