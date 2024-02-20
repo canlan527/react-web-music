@@ -21,8 +21,11 @@ const Player: FC<IProps> = () => {
     appShallowEqual
   )
 
+  // 组件内数据
+  const bgUrl = currentSong?.al?.picUrl || 'https://i.pinimg.com/564x/13/4f/d6/134fd6541c04b0c7a498d3411e014266.jpg'
+
   return (
-    <PlayerWrapper>
+    <PlayerWrapper $bgimg={bgUrl}>
       <div className="player-header-logo">X Muscial</div>
       <div className="player-header-login">登录</div>
       <div className="player-mask"></div>

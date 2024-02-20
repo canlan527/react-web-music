@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const PlayerWrapper = styled.div`
+interface IPlayerWrapper {
+  $bgimg: string
+}
+
+export const PlayerWrapper = styled.div<IPlayerWrapper>`
   position: absolute;
   width: 100%;
   height: 100vh;
@@ -47,7 +51,8 @@ export const PlayerWrapper = styled.div`
     filter: blur(65px);
     opacity: 0.6;
     transform: translateZ(0);
-    background-image: url(https://y.qq.com/music/photo_new/T002R300x300M0000012rYco2WSh8e.jpg?max_age=2592000);
+    /* background-image: url(https://y.qq.com/music/photo_new/T002R300x300M0000012rYco2WSh8e.jpg?max_age=2592000); */
+    background-image: url(${(props) => props.$bgimg});
     background-color: rgb(255, 255, 255);
   }
 `
