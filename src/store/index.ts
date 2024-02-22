@@ -3,12 +3,14 @@ import { useSelector, useDispatch, TypedUseSelectorHook, shallowEqual } from 're
 import DemoSlice from './modules/demo'
 import recommendSlice from './modules/recommend'
 import playerSlice from './modules/player'
+import singerSlice from './modules/singer'
 
 const store = configureStore({
   reducer: {
     demo: DemoSlice,
     recommend: recommendSlice,
     player: playerSlice,
+    singer: singerSlice,
   },
 })
 export type RootType = ReturnType<typeof store.getState>
