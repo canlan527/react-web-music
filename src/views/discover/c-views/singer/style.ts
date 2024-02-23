@@ -3,10 +3,6 @@ import styled from 'styled-components'
 export const SingerWrapper = styled.div`
   width: 1190px;
   margin: 0 auto;
-  .singer_title {
-    font-size: 20px;
-    padding-bottom: 24px;
-  }
   .singerlist_hot {
     width: 100%;
     display: flex;

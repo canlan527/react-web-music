@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import type { FC, ReactNode } from 'react'
 import { appShallowEqual, useAppDispatch, useAppSelector } from '@/store'
 import { fetchSingerlistAction } from '@/store/modules/singer'
@@ -29,7 +29,7 @@ const Singer: FC<IProps> = () => {
 
   return (
     <SingerWrapper>
-      <div className="singer_title">热门歌手</div>
+      <div className="section_title">热门歌手</div>
       <div className="singerlist_hot">
         {singerlist.slice(0, 10).map((item) => (
           <div className="avatar-container" key={item.id}>
