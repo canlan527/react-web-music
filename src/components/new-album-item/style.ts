@@ -80,6 +80,9 @@ export const NewAlbumItemWrapper = styled.div<ItemProps>`
     .new-album-item-singer {
       font-size: 13px;
       color: grey;
+      &-2 {
+        padding-top: 12px;
+      }
     }
   }
 `

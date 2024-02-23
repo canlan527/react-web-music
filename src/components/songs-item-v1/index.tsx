@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
 import { ItemWrapper } from './style'
 import { formatterNumber, getImageSize } from '@/utils'
+import recordPng from '@/assets/imgs/record_icon.png'
 
 interface IProps {
   children?: ReactNode
@@ -15,6 +16,7 @@ type itemType = {
   picUrl?: string
   playCount?: string
   width?: string | number
+  coverImgUrl?: string
 }
 
 const SongsItemV1: FC<IProps> = memo((props) => {
@@ -25,7 +27,11 @@ const SongsItemV1: FC<IProps> = memo((props) => {
         <div className="item-top">
           <div className="item-img">
             <div className="item-img-box">
-              <img src={item.picUrl && getImageSize(item.picUrl, 220)} alt="" />
+              {item.picUrl ? (
+                <img src={item.picUrl && getImageSize(item.picUrl, 220)} alt="" />
+              ) : (
+                <img src={item.coverImgUrl && getImageSize(item.coverImgUrl, 220)} alt="" />
+              )}
             </div>
             <i className="iconfont icon-play-filling"></i>
           </div>
