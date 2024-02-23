@@ -27,3 +27,18 @@ button {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.section_title {
+  font-size: 20px;
+  padding-bottom: 24px;
+}
+
+.ant-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 40px;
+}
+.ant-pagination-options {
+  display: none !important;
+}
