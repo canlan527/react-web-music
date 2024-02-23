@@ -1,11 +1,12 @@
 import React, { memo, useState, useEffect } from 'react'
 import type { FC, ReactNode } from 'react'
-import { appShallowEqual, useAppSelector } from '@/store'
+import { appShallowEqual, useAppDispatch, useAppSelector } from '@/store'
 
 import { Tabs, ConfigProvider } from 'antd'
 import RankList from './c-cpns/rank-list'
 
 import { RankingWrapper } from './style'
+import { fetchRankListAction } from '@/store/modules/recommend'
 
 interface IProps {
   children?: ReactNode
@@ -23,10 +24,15 @@ const Ranking: FC<IProps> = () => {
     appShallowEqual
   )
 
+  // 获取dispatch
+  const dispatch = useAppDispatch()
+
   useEffect(() => {
     // 设置ready
     if (ranklist.length > 0) {
       setReady(true)
+    } else {
+      dispatch(fetchRankListAction())
     }
 
     // 组件销毁清除函数

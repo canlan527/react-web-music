@@ -14,7 +14,7 @@ const RankList: FC<IProps> = (props) => {
   const { listData } = props
 
   useEffect(() => {
-    console.log(listData)
+    // console.log(listData)
   })
 
   return (
