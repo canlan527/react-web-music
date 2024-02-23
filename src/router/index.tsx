@@ -12,7 +12,8 @@ const Player = lazy(() => import('@/views/player'))
 // Discover子页面
 const Recommend = lazy(() => import('@/views/discover/c-views/recommend'))
 const Ranking = lazy(() => import('@/views/discover/c-views/ranking'))
-const Songs = lazy(() => import('@/views/discover/c-views/songs'))
+// const Songs = lazy(() => import('@/views/discover/c-views/songs'))
+const Songlist = lazy(() => import('@/views/discover/c-views/songlist'))
 const RadioStation = lazy(() => import('@/views/discover/c-views/radio-station'))
 const Singer = lazy(() => import('@/views/discover/c-views/singer'))
 const NewAlbum = lazy(() => import('@/views/discover/c-views/new-album'))
@@ -43,8 +44,8 @@ const routes: RouteObject[] = [
             element: <Ranking />,
           },
           {
-            path: '/home/discover/songs',
-            element: <Songs />,
+            path: '/home/discover/songlist',
+            element: <Songlist />,
           },
           {
             path: '/home/discover/radioStation',

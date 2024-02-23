@@ -8,8 +8,8 @@ export const discoverMenuData = [
     link: '/home/discover/ranking',
   },
   {
-    title: '歌曲',
-    link: '/home/discover/songs',
+    title: '歌单',
+    link: '/home/discover/songlist',
   },
   {
     title: '主播电台',
